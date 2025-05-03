@@ -1,0 +1,32 @@
+[0.028s] Invoking command in '/home/jon/swap_ws/build/ur_robotiq_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur_robotiq_description -- -j4 -l4
+[0.101s] Invoked command in '/home/jon/swap_ws/build/ur_robotiq_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur_robotiq_description -- -j4 -l4
+[0.101s] Invoking command in '/home/jon/swap_ws/build/ur_robotiq_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jon/swap_ws/build/ur_robotiq_description
+[0.119s] -- Install configuration: ""
+[0.123s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf
+[0.123s] -- Installing: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/onrobot_2fg7_upload_urdf.xacro
+[0.123s] -- Installing: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/robotiq_2f_85_urdf.xacro
+[0.123s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/ur3e_urdf.xacro
+[0.123s] -- Installing: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/ur3e_robotiq_2f_85_urdf.xacro
+[0.123s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes
+[0.123s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes/right_finger_link.stl
+[0.123s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes/base_link.stl
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes/inwards
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes/inwards/right_finger_link.stl
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes/inwards/left_finger_link.stl
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes/left_finger_link.stl
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ament_index/resource_index/package_run_dependencies/ur_robotiq_description
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ament_index/resource_index/parent_prefix_path/ur_robotiq_description
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/environment/ament_prefix_path.sh
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/environment/ament_prefix_path.dsv
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/environment/path.sh
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/environment/path.dsv
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/local_setup.bash
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/local_setup.sh
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/local_setup.zsh
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/local_setup.dsv
+[0.124s] -- Installing: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/package.dsv
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ament_index/resource_index/packages/ur_robotiq_description
+[0.124s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/cmake/ur_robotiq_descriptionConfig.cmake
+[0.125s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/cmake/ur_robotiq_descriptionConfig-version.cmake
+[0.125s] -- Up-to-date: /home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/package.xml
+[0.153s] Invoked command in '/home/jon/swap_ws/build/ur_robotiq_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jon/swap_ws/build/ur_robotiq_description

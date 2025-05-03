@@ -1,0 +1,208 @@
+[0.014s] Invoking command in '/home/jon/swap_ws/build/ur_controllers': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib:/home/jon/swap_ws/install/ur_robot_driver/lib:/home/jon/swap_ws/install/ur_controllers/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib PYTHONPATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib/python3.12/site-packages:/home/jon/swap_ws/install/ur_robot_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/cmake /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers -DCMAKE_INSTALL_PREFIX=/home/jon/swap_ws/install/ur_controllers
+[0.162s] -- The C compiler identification is GNU 13.3.0
+[0.234s] -- The CXX compiler identification is GNU 13.3.0
+[0.252s] -- Detecting C compiler ABI info
+[0.429s] -- Detecting C compiler ABI info - done
+[0.448s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.448s] -- Detecting C compile features
+[0.448s] -- Detecting C compile features - done
+[0.463s] -- Detecting CXX compiler ABI info
+[0.636s] -- Detecting CXX compiler ABI info - done
+[0.651s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.652s] -- Detecting CXX compile features
+[0.653s] -- Detecting CXX compile features - done
+[0.677s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.875s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.996s] -- Found angles: 1.16.0 (/opt/ros/jazzy/share/angles/cmake)
+[1.007s] -- Found controller_interface: 4.27.0 (/opt/ros/jazzy/share/controller_interface/cmake)
+[1.095s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.109s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.130s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.155s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.695s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[1.844s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.858s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.955s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[2.092s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[2.103s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[2.132s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[2.139s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[2.156s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[2.177s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.788s] -- Found joint_trajectory_controller: 4.22.0 (/opt/ros/jazzy/share/joint_trajectory_controller/cmake)
+[2.964s] -- Found std_srvs: 5.3.6 (/opt/ros/jazzy/share/std_srvs/cmake)
+[2.994s] -- Found tf2_geometry_msgs: 0.36.9 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[3.013s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[3.016s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[3.016s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[3.157s] -- Found ur_dashboard_msgs: 3.2.1 (/home/jon/swap_ws/install/ur_dashboard_msgs/share/ur_dashboard_msgs/cmake)
+[3.190s] -- Found ur_msgs: 2.2.0 (/opt/ros/jazzy/share/ur_msgs/cmake)
+[3.248s] -- Found ament_cmake_gmock: 2.5.3 (/opt/ros/jazzy/share/ament_cmake_gmock/cmake)
+[3.252s] -- Found controller_manager: 4.27.0 (/opt/ros/jazzy/share/controller_manager/cmake)
+[3.438s] -- Found ros2_control_test_assets: 4.27.0 (/opt/ros/jazzy/share/ros2_control_test_assets/cmake)
+[3.449s] -- Found gmock sources under '/opt/ros/jazzy/src/gmock_vendor': C++ tests using 'Google Mock' will be built
+[3.461s] -- Found ament_cmake_gtest: 2.5.3 (/opt/ros/jazzy/share/ament_cmake_gtest/cmake)
+[3.461s] -- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[3.565s] -- Configuring done (3.5s)
+[3.705s] -- Generating done (0.1s)
+[3.732s] -- Build files have been written to: /home/jon/swap_ws/build/ur_controllers
+[3.758s] Invoked command in '/home/jon/swap_ws/build/ur_controllers' returned '0': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib:/home/jon/swap_ws/install/ur_robot_driver/lib:/home/jon/swap_ws/install/ur_controllers/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib PYTHONPATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib/python3.12/site-packages:/home/jon/swap_ws/install/ur_robot_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/cmake /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers -DCMAKE_INSTALL_PREFIX=/home/jon/swap_ws/install/ur_controllers
+[3.758s] Invoking command in '/home/jon/swap_ws/build/ur_controllers': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib:/home/jon/swap_ws/install/ur_robot_driver/lib:/home/jon/swap_ws/install/ur_controllers/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib PYTHONPATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib/python3.12/site-packages:/home/jon/swap_ws/install/ur_robot_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/cmake --build /home/jon/swap_ws/build/ur_controllers -- -j4 -l4
+[3.822s] [  2%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/tool_contact_controller_parameters.yaml `[0m
+[3.830s] [  5%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/force_mode_controller_parameters.yaml `[0m
+[3.830s] [  8%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/speed_scaling_state_broadcaster_parameters.yaml `[0m
+[3.830s] [ 11%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/gpio_controller_parameters.yaml `[0m
+[4.399s] [ 14%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/gpio_controller_parameters.hpp[0m
+[4.406s] [ 17%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/tool_contact_controller_parameters.hpp[0m
+[4.430s] [ 20%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/speed_scaling_state_broadcaster_parameters.hpp[0m
+[4.445s] [ 20%] Built target gpio_controller_parameters
+[4.454s] [ 20%] Built target tool_contact_controller_parameters
+[4.467s] [ 23%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/scaled_joint_trajectory_controller_parameters.yaml `[0m
+[4.475s] [ 26%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/freedrive_mode_controller_parameters.yaml `[0m
+[4.480s] [ 26%] Built target speed_scaling_state_broadcaster_parameters
+[4.511s] [ 29%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/passthrough_trajectory_controller_parameters.yaml `[0m
+[4.560s] [ 32%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/force_mode_controller_parameters.hpp[0m
+[4.635s] [ 32%] Built target force_mode_controller_parameters
+[4.659s] [ 35%] [34m[1mRunning `/opt/ros/jazzy/bin/generate_parameter_library_cpp /home/jon/swap_ws/build/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp /home/jon/swap_ws/src/Universal_Robots_ROS2_Driver/ur_controllers/src/ur_configuration_controller_parameters.yaml `[0m
+[5.001s] [ 38%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/scaled_joint_trajectory_controller_parameters.hpp[0m
+[5.066s] [ 38%] Built target scaled_joint_trajectory_controller_parameters
+[5.093s] [ 41%] [32mBuilding CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o[0m
+[5.136s] [ 44%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/passthrough_trajectory_controller_parameters.hpp[0m
+[5.140s] [ 47%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/freedrive_mode_controller_parameters.hpp[0m
+[5.165s] [ 50%] [34m[1mCreating deprecated header file /home/jon/swap_ws/build/ur_controllers/include/ur_configuration_controller_parameters.hpp[0m
+[5.190s] [ 50%] Built target passthrough_trajectory_controller_parameters
+[5.193s] [ 50%] Built target freedrive_mode_controller_parameters
+[5.220s] [ 52%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/opt/ros/jazzy/src/gtest_vendor/src/gtest-all.cc.o[0m
+[5.220s] [ 55%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/src/gmock-all.cc.o[0m
+[5.224s] [ 55%] Built target ur_configuration_controller_parameters
+[5.254s] [ 58%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/tool_contact_controller.cpp.o[0m
+[6.642s] [ 61%] [32m[1mLinking CXX static library libgmock_main.a[0m
+[7.700s] [ 61%] Built target gmock_main
+[7.720s] [ 64%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/force_mode_controller.cpp.o[0m
+[8.848s] [ 67%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/scaled_joint_trajectory_controller.cpp.o[0m
+[11.477s] [ 70%] [32m[1mLinking CXX static library libgmock.a[0m
+[11.677s] [ 70%] Built target gmock
+[11.690s] [ 73%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/speed_scaling_state_broadcaster.cpp.o[0m
+[14.616s] [ 76%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/freedrive_mode_controller.cpp.o[0m
+[16.556s] [ 79%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/gpio_controller.cpp.o[0m
+[17.388s] [ 82%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/passthrough_trajectory_controller.cpp.o[0m
+[18.815s] [ 85%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/ur_configuration_controller.cpp.o[0m
+[328.222s] [ 88%] [32m[1mLinking CXX shared library libur_controllers.so[0m
+[330.884s] [ 88%] Built target ur_controllers
+[330.962s] [ 91%] [32mBuilding CXX object CMakeFiles/test_load_force_mode_controller.dir/test/test_load_force_mode_controller.cpp.o[0m
+[339.047s] [ 94%] [32m[1mLinking CXX executable test_load_force_mode_controller[0m
+[339.620s] [ 94%] Built target test_load_force_mode_controller
+[339.662s] [ 97%] [32mBuilding CXX object CMakeFiles/test_load_freedrive_mode_controller.dir/test/test_load_freedrive_mode_controller.cpp.o[0m
+[346.859s] [100%] [32m[1mLinking CXX executable test_load_freedrive_mode_controller[0m
+[347.539s] [100%] Built target test_load_freedrive_mode_controller
+[347.560s] Invoked command in '/home/jon/swap_ws/build/ur_controllers' returned '0': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib:/home/jon/swap_ws/install/ur_robot_driver/lib:/home/jon/swap_ws/install/ur_controllers/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib PYTHONPATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib/python3.12/site-packages:/home/jon/swap_ws/install/ur_robot_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/cmake --build /home/jon/swap_ws/build/ur_controllers -- -j4 -l4
+[347.567s] Invoking command in '/home/jon/swap_ws/build/ur_controllers': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib:/home/jon/swap_ws/install/ur_robot_driver/lib:/home/jon/swap_ws/install/ur_controllers/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib PYTHONPATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib/python3.12/site-packages:/home/jon/swap_ws/install/ur_robot_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/cmake --install /home/jon/swap_ws/build/ur_controllers
+[347.582s] -- Install configuration: ""
+[347.583s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.583s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.583s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.584s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.584s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.584s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.585s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.585s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.585s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.586s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.586s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.587s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.587s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.588s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.588s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.588s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.588s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.589s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.589s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.590s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.590s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.591s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.592s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.593s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[347.594s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[347.594s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/controller_plugins.xml
+[347.594s] -- Installing: /home/jon/swap_ws/install/ur_controllers/lib/libur_controllers.so
+[347.610s] -- Set non-toolchain portion of runtime path of "/home/jon/swap_ws/install/ur_controllers/lib/libur_controllers.so" to ""
+[347.610s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include
+[347.610s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers
+[347.610s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller.hpp
+[347.610s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster.hpp
+[347.611s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/gpio_controller.hpp
+[347.611s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller.hpp
+[347.611s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller.hpp
+[347.611s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/force_mode_controller.hpp
+[347.612s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller.hpp
+[347.613s] -- Installing: /home/jon/swap_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller.hpp
+[347.613s] -- Up-to-date: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/controller_plugins.xml
+[347.614s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/environment/library_path.sh
+[347.615s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/environment/library_path.dsv
+[347.616s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ament_index/resource_index/package_run_dependencies/ur_controllers
+[347.616s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ament_index/resource_index/parent_prefix_path/ur_controllers
+[347.618s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/environment/ament_prefix_path.sh
+[347.619s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/environment/ament_prefix_path.dsv
+[347.619s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/environment/path.sh
+[347.619s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/environment/path.dsv
+[347.619s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/local_setup.bash
+[347.620s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/local_setup.sh
+[347.620s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/local_setup.zsh
+[347.620s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/local_setup.dsv
+[347.621s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/package.dsv
+[347.621s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ament_index/resource_index/packages/ur_controllers
+[347.622s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ament_index/resource_index/controller_interface__pluginlib__plugin/ur_controllers
+[347.623s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/cmake/ament_cmake_export_dependencies-extras.cmake
+[347.624s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/cmake/ament_cmake_export_include_directories-extras.cmake
+[347.624s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/cmake/ament_cmake_export_libraries-extras.cmake
+[347.625s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/cmake/ur_controllersConfig.cmake
+[347.625s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/cmake/ur_controllersConfig-version.cmake
+[347.626s] -- Installing: /home/jon/swap_ws/install/ur_controllers/share/ur_controllers/package.xml
+[347.631s] Invoked command in '/home/jon/swap_ws/build/ur_controllers' returned '0': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib:/home/jon/swap_ws/install/ur_robot_driver/lib:/home/jon/swap_ws/install/ur_controllers/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib PYTHONPATH=/home/jon/swap_ws/install/ur_dashboard_msgs/lib/python3.12/site-packages:/home/jon/swap_ws/install/ur_robot_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/cmake --install /home/jon/swap_ws/build/ur_controllers

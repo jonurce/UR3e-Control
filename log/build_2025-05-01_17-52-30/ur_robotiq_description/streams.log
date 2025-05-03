@@ -1,0 +1,35 @@
+[0.023s] Invoking command in '/home/jon/swap_ws/build/ur_robotiq_description': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur_robotiq_description -- -j4 -l4
+[0.053s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.343s] -- Found ur_robotiq_description: 0.0.0 (/home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/cmake)
+[0.344s] -- Found ur_description: 3.1.0 (/opt/ros/jazzy/share/ur_description/cmake)
+[0.344s] -- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[0.417s] Error parsing '/home/jon/swap_ws/src/ur_robotiq/ur_robotiq_description/package.xml':
+[3.063s] Traceback (most recent call last):
+[3.064s]   File "/opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>
+[3.064s]     main()
+[3.064s]   File "/opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main
+[3.064s]     raise e
+[3.064s]   File "/opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main
+[3.064s]     package = parse_package_string(
+[3.064s]               ^^^^^^^^^^^^^^^^^^^^^
+[3.064s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 788, in parse_package_string
+[3.064s]     pkg.validate(warnings=warnings)
+[3.065s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 330, in validate
+[3.065s]     raise InvalidPackage('\n'.join(errors), self.filename)
+[3.065s] catkin_pkg.package.InvalidPackage: Error(s) in package '/home/jon/swap_ws/src/ur_robotiq/ur_robotiq_description/package.xml':
+[3.065s] The package "ur_robotiq_description" must not "exec_depend" on a package with the same name as this package
+[3.112s] [31mCMake Error at /opt/ros/jazzy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+[3.112s]   execute_process(/usr/bin/python3
+[3.112s]   /opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[3.112s]   /home/jon/swap_ws/src/ur_robotiq/ur_robotiq_description/package.xml
+[3.112s]   /home/jon/swap_ws/build/ur_robotiq_description/ament_cmake_core/package.cmake)
+[3.112s]   returned error code 1
+[3.112s] Call Stack (most recent call first):
+[3.112s]   /opt/ros/jazzy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[3.112s]   /opt/ros/jazzy/share/ament_lint_auto/cmake/ament_lint_auto_find_test_dependencies.cmake:31 (ament_package_xml)
+[3.112s]   CMakeLists.txt:37 (ament_lint_auto_find_test_dependencies)
+[3.112s] 
+[3.112s] [0m
+[3.112s] -- Configuring incomplete, errors occurred!
+[3.117s] gmake: *** [Makefile:226: cmake_check_build_system] Error 1
+[3.119s] Invoked command in '/home/jon/swap_ws/build/ur_robotiq_description' returned '2': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur_robotiq_description -- -j4 -l4

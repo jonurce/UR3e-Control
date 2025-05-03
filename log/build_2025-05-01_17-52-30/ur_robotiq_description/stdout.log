@@ -1,0 +1,5 @@
+-- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found ur_robotiq_description: 0.0.0 (/home/jon/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/cmake)
+-- Found ur_description: 3.1.0 (/opt/ros/jazzy/share/ur_description/cmake)
+-- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Configuring incomplete, errors occurred!

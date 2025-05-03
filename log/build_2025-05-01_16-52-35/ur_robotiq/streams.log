@@ -1,0 +1,42 @@
+[0.013s] Invoking command in '/home/jon/swap_ws/build/ur_robotiq': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jon/swap_ws/src/ur_robotiq/ur_robotiq -DCMAKE_INSTALL_PREFIX=/home/jon/swap_ws/install/ur_robotiq
+[0.140s] -- The C compiler identification is GNU 13.3.0
+[0.234s] -- The CXX compiler identification is GNU 13.3.0
+[0.264s] -- Detecting C compiler ABI info
+[0.469s] -- Detecting C compiler ABI info - done
+[0.488s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.488s] -- Detecting C compile features
+[0.497s] -- Detecting C compile features - done
+[0.529s] -- Detecting CXX compiler ABI info
+[0.812s] -- Detecting CXX compiler ABI info - done
+[0.832s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.835s] -- Detecting CXX compile features
+[0.837s] -- Detecting CXX compile features - done
+[0.843s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.237s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.394s] -- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.493s] -- Added test 'lint_cmake' to check CMake code style
+[1.495s] -- Added test 'xmllint' to check XML markup files
+[1.497s] -- Configuring done (1.4s)
+[1.503s] -- Generating done (0.0s)
+[1.505s] -- Build files have been written to: /home/jon/swap_ws/build/ur_robotiq
+[1.511s] Invoked command in '/home/jon/swap_ws/build/ur_robotiq' returned '0': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jon/swap_ws/src/ur_robotiq/ur_robotiq -DCMAKE_INSTALL_PREFIX=/home/jon/swap_ws/install/ur_robotiq
+[1.511s] Invoking command in '/home/jon/swap_ws/build/ur_robotiq': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur_robotiq -- -j4 -l4
+[1.561s] Invoked command in '/home/jon/swap_ws/build/ur_robotiq' returned '0': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur_robotiq -- -j4 -l4
+[1.563s] Invoking command in '/home/jon/swap_ws/build/ur_robotiq': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jon/swap_ws/build/ur_robotiq
+[1.571s] -- Install configuration: ""
+[1.571s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ament_index/resource_index/package_run_dependencies/ur_robotiq
+[1.571s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ament_index/resource_index/parent_prefix_path/ur_robotiq
+[1.572s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/ament_prefix_path.sh
+[1.572s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/ament_prefix_path.dsv
+[1.572s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/path.sh
+[1.572s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/path.dsv
+[1.572s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.bash
+[1.572s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.sh
+[1.572s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.zsh
+[1.573s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.dsv
+[1.573s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/package.dsv
+[1.573s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ament_index/resource_index/packages/ur_robotiq
+[1.573s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/cmake/ur_robotiqConfig.cmake
+[1.573s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/cmake/ur_robotiqConfig-version.cmake
+[1.573s] -- Installing: /home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/package.xml
+[1.575s] Invoked command in '/home/jon/swap_ws/build/ur_robotiq' returned '0': CMAKE_PREFIX_PATH=/home/jon/swap_ws/install/ur_robotiq_description:/home/jon/swap_ws/install/ur_robotiq:/home/jon/swap_ws/install/ur:/home/jon/swap_ws/install/ur_calibration:/home/jon/swap_ws/install/ur_robot_driver:/home/jon/swap_ws/install/ur_moveit_config:/home/jon/swap_ws/install/ur_controllers:/home/jon/swap_ws/install/ur_dashboard_msgs:/home/jon/swap_ws/install/ur3e_2fg7_description:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jon/swap_ws/build/ur_robotiq

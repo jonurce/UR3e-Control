@@ -1,0 +1,15 @@
+/home/jon/swap_ws/install/ur_robotiq/share/ament_index/resource_index/package_run_dependencies/ur_robotiq
+/home/jon/swap_ws/install/ur_robotiq/share/ament_index/resource_index/parent_prefix_path/ur_robotiq
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/ament_prefix_path.sh
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/ament_prefix_path.dsv
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/path.sh
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/environment/path.dsv
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.bash
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.sh
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.zsh
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/local_setup.dsv
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/package.dsv
+/home/jon/swap_ws/install/ur_robotiq/share/ament_index/resource_index/packages/ur_robotiq
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/cmake/ur_robotiqConfig.cmake
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/cmake/ur_robotiqConfig-version.cmake
+/home/jon/swap_ws/install/ur_robotiq/share/ur_robotiq/package.xml

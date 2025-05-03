@@ -1,0 +1,46 @@
+[0.024s] Invoking command in '/home/jon/swap_ws/build/ur3e_2fg7_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jon/swap_ws/src/ur3e_2fg7_description -DCMAKE_INSTALL_PREFIX=/home/jon/swap_ws/install/ur3e_2fg7_description
+[0.233s] -- The C compiler identification is GNU 13.3.0
+[0.413s] -- The CXX compiler identification is GNU 13.3.0
+[0.439s] -- Detecting C compiler ABI info
+[0.575s] -- Detecting C compiler ABI info - done
+[0.585s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.585s] -- Detecting C compile features
+[0.585s] -- Detecting C compile features - done
+[0.600s] -- Detecting CXX compiler ABI info
+[0.743s] -- Detecting CXX compiler ABI info - done
+[0.754s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.754s] -- Detecting CXX compile features
+[0.754s] -- Detecting CXX compile features - done
+[0.781s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.990s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.364s] -- Configuring done (1.3s)
+[1.373s] -- Generating done (0.0s)
+[1.380s] -- Build files have been written to: /home/jon/swap_ws/build/ur3e_2fg7_description
+[1.398s] Invoked command in '/home/jon/swap_ws/build/ur3e_2fg7_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jon/swap_ws/src/ur3e_2fg7_description -DCMAKE_INSTALL_PREFIX=/home/jon/swap_ws/install/ur3e_2fg7_description
+[1.398s] Invoking command in '/home/jon/swap_ws/build/ur3e_2fg7_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur3e_2fg7_description -- -j4 -l4
+[1.541s] Invoked command in '/home/jon/swap_ws/build/ur3e_2fg7_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jon/swap_ws/build/ur3e_2fg7_description -- -j4 -l4
+[1.564s] Invoking command in '/home/jon/swap_ws/build/ur3e_2fg7_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jon/swap_ws/build/ur3e_2fg7_description
+[1.587s] -- Install configuration: ""
+[1.587s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description//urdf
+[1.588s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description//urdf/ur3e_2fg7.urdf
+[1.591s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description//meshes
+[1.591s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description//launch
+[1.591s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description//launch/display.launch.py
+[1.592s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description//rviz
+[1.593s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description//rviz/ur3e_2fg7.rviz
+[1.593s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ament_index/resource_index/package_run_dependencies/ur3e_2fg7_description
+[1.596s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ament_index/resource_index/parent_prefix_path/ur3e_2fg7_description
+[1.596s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/environment/ament_prefix_path.sh
+[1.596s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/environment/ament_prefix_path.dsv
+[1.598s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/environment/path.sh
+[1.598s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/environment/path.dsv
+[1.599s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/local_setup.bash
+[1.599s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/local_setup.sh
+[1.599s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/local_setup.zsh
+[1.604s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/local_setup.dsv
+[1.605s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/package.dsv
+[1.605s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ament_index/resource_index/packages/ur3e_2fg7_description
+[1.605s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/cmake/ur3e_2fg7_descriptionConfig.cmake
+[1.605s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/cmake/ur3e_2fg7_descriptionConfig-version.cmake
+[1.605s] -- Installing: /home/jon/swap_ws/install/ur3e_2fg7_description/share/ur3e_2fg7_description/package.xml
+[1.617s] Invoked command in '/home/jon/swap_ws/build/ur3e_2fg7_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jon/swap_ws/build/ur3e_2fg7_description
