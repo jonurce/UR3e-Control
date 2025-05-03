@@ -4,9 +4,11 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="2fg7_outwards">
+
   <material name="silver">
     <color rgba="0.700 0.700 0.700 1.000"/>
   </material>
+
   <gazebo reference="gripper_base_link">
     <material>Gazebo/Grey</material>
     <implicitSpringDamper>1</implicitSpringDamper>
@@ -17,6 +19,7 @@
     <selfCollide>true</selfCollide>
     <gravity>true</gravity>
   </gazebo>
+
   <gazebo reference="right_finger_link">
     <material>Gazebo/Grey</material>
     <implicitSpringDamper>1</implicitSpringDamper>
@@ -26,6 +29,7 @@
     <kd>1.0</kd>
     <selfCollide>true</selfCollide>
   </gazebo>
+
   <gazebo reference="left_finger_link">
     <material>Gazebo/Grey</material>
     <implicitSpringDamper>1</implicitSpringDamper>
@@ -35,6 +39,7 @@
     <kd>1.0</kd>
     <selfCollide>true</selfCollide>
   </gazebo>
+
   <transmission name="left_finger_joint_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="left_finger_joint">
@@ -45,6 +50,7 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+
   <link name="onrobot_2fg7_base_link">
     <inertial>
       <origin rpy="0 0 0" xyz="-4.898915958379213e-05 2.84756960271082e-06 0.06811082379774974"/>
@@ -65,6 +71,7 @@
       </geometry>
     </collision>
   </link>
+
   <link name="right_finger_link">
     <inertial>
       <origin rpy="0 0 0" xyz="0.017874296677847158 0.02949104051991925 0.01523421548622829"/>
@@ -85,6 +92,7 @@
       </geometry>
     </collision>
   </link>
+
   <link name="left_finger_link">
     <inertial>
       <origin rpy="0 0 0" xyz="0.004247703322119739 0.029496959480080673 0.015234215486237948"/>
@@ -105,6 +113,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint name="left_finger_joint" type="prismatic">
     <origin rpy="0 0 0" xyz="0.032239 -0.029494 0.12005"/>
     <parent link="onrobot_2fg7_base_link"/>
@@ -113,6 +122,7 @@
     <limit effort="140" lower="0.0" upper="0.019" velocity="0.45"/>
     <!-- total 0.38 -->
   </joint>
+
   <joint name="right_finger_joint" type="prismatic">
     <origin rpy="0 0 0" xyz="-0.054361 -0.029494 0.12005"/>
     <parent link="onrobot_2fg7_base_link"/>
@@ -121,12 +131,14 @@
     <limit effort="140" lower="-0.019" upper="0.019" velocity="0.45"/>
     <mimic joint="left_finger_joint" multiplier="1.0"/>
   </joint>
+
   <link name="world"/>
   <joint name="world_joint" type="fixed">
-    <parent link="tool0"/>
+    <parent link="world"/>
     <child link="onrobot_2fg7_base_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
+
   <gazebo>
     <plugin filename="libgazebo_grasp_fix.so" name="gazebo_grasp_fix">
       <arm>
@@ -144,6 +156,7 @@
       <contact_topic>__default_topic__</contact_topic>
     </plugin>
   </gazebo>
+
   <gazebo>
     <!-- loading plugin: mimic joints works in gazebo now -->
     <plugin filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so" name="mimic_2FG7">
