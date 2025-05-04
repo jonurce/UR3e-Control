@@ -1,9 +1,0 @@
-/home/jon/swap_ws/build/ur/CMakeFiles/uninstall.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/ur_uninstall.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/test.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/edit_cache.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/rebuild_cache.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/list_install_components.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/install.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/install/local.dir
-/home/jon/swap_ws/build/ur/CMakeFiles/install/strip.dir

@@ -4,7 +4,7 @@
     <xacro:arg name="use_fake_hardware" default="true" />
 
     <!-- If visualizing just the gripper with no arm, set the true, otherwise, set to false -->
-    <xacro:property name="gripper_only" value="false"/>
+    <xacro:property name="gripper_only" value="true"/>
 
     <xacro:macro name="2fg7_outwards" params="
         name
@@ -18,14 +18,15 @@
         include_ros2_control:=true
         com_port:=/dev/ttyUSB0">
 
-        <!-- COMMENTED ROS 2 CONTROL FOR LATER -->
-
         <!-- ros2 control include -->
-        <!-- <xacro:include filename="$(find robotiq_description)/urdf/robotiq_gripper.ros2_control.xacro" /> -->
+        <!--
+        <xacro:include filename="package://ur_robotiq_description/urdf/onrobot_2fg7_gripper.ros2_control.xacro" />
+        -->
         <!-- if we are simulating or directly communicating with the gripper we need a ros2 control instance -->
+
         <!--
         <xacro:if value="${include_ros2_control}">
-            <xacro:robotiq_gripper_ros2_control
+            <xacro:onrobot_2fg7_gripper_ros2_control
                 name="${name}" prefix="${prefix}"
                 sim_ignition="${sim_ignition}"
                 sim_isaac="${sim_isaac}"
@@ -89,8 +90,9 @@
             </inertial>
         </link>
 
+
         <joint name="${prefix}2fg7_base_joint" type="fixed">
-            <parent link="tool0" />
+            <parent link="base_link" />
             <child link="${prefix}2fg7_base_link" />
             <xacro:insert_block name="origin" />
         </joint>

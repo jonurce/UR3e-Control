@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jon/swap_ws/src/ur_robotiq/ur_robotiq
+CMAKE_SOURCE_DIR = /home/jon/Workspace/swap_ws/src/ur_robotiq/ur_robotiq
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jon/swap_ws/build/ur_robotiq
+CMAKE_BINARY_DIR = /home/jon/Workspace/swap_ws/build/ur_robotiq
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/jon/swap_ws/build/ur_robotiq && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jon/swap_ws/src/ur_robotiq/ur_robotiq /home/jon/swap_ws/src/ur_robotiq/ur_robotiq /home/jon/swap_ws/build/ur_robotiq /home/jon/swap_ws/build/ur_robotiq /home/jon/swap_ws/build/ur_robotiq/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/jon/Workspace/swap_ws/build/ur_robotiq && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jon/Workspace/swap_ws/src/ur_robotiq/ur_robotiq /home/jon/Workspace/swap_ws/src/ur_robotiq/ur_robotiq /home/jon/Workspace/swap_ws/build/ur_robotiq /home/jon/Workspace/swap_ws/build/ur_robotiq /home/jon/Workspace/swap_ws/build/ur_robotiq/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/uninstall.dir/depend
 
