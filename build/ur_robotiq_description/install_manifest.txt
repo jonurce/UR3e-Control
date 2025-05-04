@@ -1,8 +1,7 @@
-/home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/onrobot_2fg7_gripper.ros2_control.xacro
-/home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/onrobot_2fg7_upload_urdf.xacro
 /home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/robotiq_2f_85_urdf.xacro
 /home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/ur3e_onrobot_2fg7_urdf.xacro
 /home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/onrobot_2fg7_urdf.xacro
+/home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/realsense_L515_urdf.xacro
 /home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/ur3e_urdf.xacro
 /home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/urdf/ur3e_robotiq_2f_85_urdf.xacro
 /home/jon/Workspace/swap_ws/install/ur_robotiq_description/share/ur_robotiq_description/meshes/right_finger_link.stl
