@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/jon/Workspace/swap_ws/build/ur_robotiq/CMakeFiles/CMakeScratch/TryCompile-btV5pe"
-      binary: "/home/jon/Workspace/swap_ws/build/ur_robotiq/CMakeFiles/CMakeScratch/TryCompile-btV5pe"
+      source: "/home/jon/Workspace/swap_ws/build/ur_custom/CMakeFiles/CMakeScratch/TryCompile-btV5pe"
+      binary: "/home/jon/Workspace/swap_ws/build/ur_custom/CMakeFiles/CMakeScratch/TryCompile-btV5pe"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -294,8 +294,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/jon/Workspace/swap_ws/build/ur_robotiq/CMakeFiles/CMakeScratch/TryCompile-yJy4bf"
-      binary: "/home/jon/Workspace/swap_ws/build/ur_robotiq/CMakeFiles/CMakeScratch/TryCompile-yJy4bf"
+      source: "/home/jon/Workspace/swap_ws/build/ur_custom/CMakeFiles/CMakeScratch/TryCompile-yJy4bf"
+      binary: "/home/jon/Workspace/swap_ws/build/ur_custom/CMakeFiles/CMakeScratch/TryCompile-yJy4bf"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"

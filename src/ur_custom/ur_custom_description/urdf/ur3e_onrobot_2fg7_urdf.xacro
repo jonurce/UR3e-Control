@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur3e_robotiq">
+
+	<!-- This xacro file combines the UR3e collaborative robotic arm, the
+		OnRobot 2FG7 gripper and a simplified version of the Realsense L515 Camera. -->
+
+    <!-- Include macros for the UR3e and the OnRobot 2FG7 gripper -->
+    <xacro:include filename="$(find ur_custom_description)/urdf/ur3e_urdf.xacro" />
+    <xacro:include filename="$(find ur_custom_description)/urdf/onrobot_2fg7_urdf.xacro" />
+    <xacro:include filename="$(find ur_custom_description)/urdf/realsense_L515_urdf.xacro" />
+
+</robot>

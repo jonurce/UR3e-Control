@@ -1,4 +1,4 @@
-# Install script for directory: /home/jon/Workspace/swap_ws/src/ur_robotiq/ur_robotiq
+# Install script for directory: /home/jon/Workspace/swap_ws/src/ur_custom/ur_custom
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

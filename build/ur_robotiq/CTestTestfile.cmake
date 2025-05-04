@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/jon/Workspace/swap_ws/src/ur_robotiq/ur_robotiq
-# Build directory: /home/jon/Workspace/swap_ws/build/ur_robotiq
+# Source directory: /home/jon/Workspace/swap_ws/src/ur_custom/ur_custom
+# Build directory: /home/jon/Workspace/swap_ws/build/ur_custom
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

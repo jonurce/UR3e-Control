@@ -25,7 +25,7 @@
   </link>
 
   <joint name="gripper_to_l515" type="fixed">
-    <parent link="onrobot_2fg7_base_link"/>
+    <parent link="tool0"/>
     <child link="l515_base"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
