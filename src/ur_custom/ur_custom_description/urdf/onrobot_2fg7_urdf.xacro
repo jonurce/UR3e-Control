@@ -5,7 +5,7 @@
     <color rgba="0.700 0.700 0.700 1.000"/>
   </material>
 
-  <!--
+
   <gazebo reference="onrobot_2fg7_base_link">
     <material>Gazebo/Grey</material>
     <implicitSpringDamper>1</implicitSpringDamper>
@@ -37,6 +37,7 @@
     <selfCollide>true</selfCollide>
   </gazebo>
 
+  <!--
   <transmission name="left_finger_joint_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="left_finger_joint">
@@ -47,7 +48,6 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-
   -->
 
   <link name="onrobot_2fg7_base_link">
@@ -138,7 +138,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
 
-  <!--
+
   <gazebo>
     <plugin filename="libgazebo_grasp_fix.so" name="gazebo_grasp_fix">
       <arm>
@@ -156,19 +156,15 @@
       <contact_topic>__default_topic__</contact_topic>
     </plugin>
   </gazebo>
-  -->
 
   <!-- loading plugin: mimic joints works in gazebo now -->
-  <!-- AFTER mimicJOint: <multiplier>1.0</multiplier>
-                <offset>0.0</offset -->
-  <!--
   <gazebo>
     <plugin filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so" name="mimic_2FG7">
       <joint>left_finger_joint</joint>
       <mimicJoint>right_finger_joint</mimicJoint>
-
+      <multiplier>1.0</multiplier>
+      <offset>0.0</offset>
     </plugin>
   </gazebo>
-  -->
 
 </robot>

@@ -14,27 +14,79 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(robotiq_description REQUIRED)
 find_package(ur_description REQUIRED)
+find_package(xacro REQUIRED)
+find_package(ros_gz_sim REQUIRED)
 
 # Copy necessary files to designated locations in the project
-install (
-  DIRECTORY urdf meshes
-  DESTINATION share/${PROJECT_NAME}
+#install (
+#        DIRECTORY urdf meshes launch config sdf
+#        DESTINATION share/${PROJECT_NAME}
+#)
+
+# Define paths for input and output files
+set(XACRO_FILE "${CMAKE_CURRENT_SOURCE_DIR}/urdf/ur3e_onrobot_2fg7_urdf.xacro")
+set(URDF_FILE "${CMAKE_BINARY_DIR}/urdf/ur3e_onrobot_2fg7.urdf")
+set(SDF_FILE "${CMAKE_BINARY_DIR}/sdf/ur3e_onrobot_2fg7.sdf")
+
+add_custom_command(
+        OUTPUT ${URDF_FILE}
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/urdf
+        COMMAND xacro ${XACRO_FILE} -o ${URDF_FILE}
+        DEPENDS ${XACRO_FILE} ${CMAKE_CURRENT_SOURCE_DIR}/config/ur3e_controllers.yaml
+        COMMENT "Generating URDF from XACRO"
 )
 
-# Automates the process of setting up linting for the package, which
-# is the process of running tools that analyze the code for potential
-# errors, style issues, and other discrepancies that do not adhere to
-# specified coding standards or best practices.
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
+# Generate SDF from URDF
+add_custom_command(
+        OUTPUT ${SDF_FILE}
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/sdf
+        COMMAND gz sdf -p ${URDF_FILE} > ${SDF_FILE}
+        #COMMAND gz sdf -p ${URDF_FILE} > ${SDF_FILE}.tmp
+        #COMMAND sed 's|model://|package://|g' ${SDF_FILE}.tmp > ${SDF_FILE}
+        #COMMAND ${CMAKE_COMMAND} -E remove ${SDF_FILE}.tmp
+        DEPENDS ${URDF_FILE}
+        COMMENT "Generating SDF from URDF"
+)
+
+# Create ~/.gz/models/ and copy meshes
+add_custom_command(
+        OUTPUT ${CMAKE_BINARY_DIR}/gz_models.stamp
+        COMMAND ${CMAKE_COMMAND} -E make_directory ~/.gz/models/ur_custom_description/meshes
+        COMMAND ${CMAKE_COMMAND} -E make_directory ~/.gz/models/ur_custom_description/sdf
+        COMMAND ${CMAKE_COMMAND} -E make_directory ~/.gz/models/ur_description/meshes/ur3e/visual
+        COMMAND ${CMAKE_COMMAND} -E make_directory ~/.gz/models/ur_description/meshes/ur3e/collision
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/meshes ~/.gz/models/ur_custom_description/meshes
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/sdf ~/.gz/models/ur_custom_description/sdf
+        COMMAND ${CMAKE_COMMAND} -E copy_directory /opt/ros/jazzy/share/ur_description/meshes/ur3e/visual ~/.gz/models/ur_description/meshes/ur3e/visual
+        COMMAND ${CMAKE_COMMAND} -E copy_directory /opt/ros/jazzy/share/ur_description/meshes/ur3e/collision ~/.gz/models/ur_description/meshes/ur3e/collision
+        COMMAND sh -c "grep -q 'export GZ_SIM_RESOURCE_PATH=~/.gz/models' ~/.bashrc || echo 'export GZ_SIM_RESOURCE_PATH=~/.gz/models' >> ~/.bashrc"
+        COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_BINARY_DIR}/gz_models.stamp
+        DEPENDS ${SDF_FILE} ${CMAKE_CURRENT_SOURCE_DIR}/meshes
+        COMMENT "Setting up Gazebo models in ~/.gz/models/ and GZ_SIM_RESOURCE_PATH"
+)
+
+# Custom target to ensure URDF and SDF are built
+add_custom_target(generate_models ALL
+        DEPENDS ${URDF_FILE} ${SDF_FILE} ${CMAKE_BINARY_DIR}/gz_models.stamp
+)
+
+# Install generated files
+install(FILES
+        ${URDF_FILE}
+        DESTINATION share/${PROJECT_NAME}/urdf
+)
+install(FILES
+        ${SDF_FILE}
+        DESTINATION share/${PROJECT_NAME}/sdf
+)
+
+# Install directories
+install(DIRECTORY urdf meshes config sdf launch
+        DESTINATION share/${PROJECT_NAME}
+        PATTERN "*.xacro" EXCLUDE
+)
+
 
 ament_package()
+
+
