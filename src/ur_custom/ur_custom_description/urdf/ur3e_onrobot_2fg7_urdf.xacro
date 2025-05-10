@@ -4,14 +4,6 @@
 	<!-- This xacro file combines the UR3e collaborative robotic arm, the
 		OnRobot 2FG7 gripper and a simplified version of the Realsense L515 Camera. -->
 
-    <!-- Gazebo plugin for ROS 2 joint control-->
-	<gazebo>
-      <plugin name="gz_ros2_control" filename="gz-sim-ros2-control-system">
-        <robot_namespace>ur3e</robot_namespace>
-        <parameters>package://ur_custom_description/config/ur3e_controllers.yaml</parameters>
-      </plugin>
-    </gazebo>
-
     <!-- Include macros for the UR3e and the OnRobot 2FG7 gripper -->
     <xacro:include filename="ur3e_urdf.xacro" />
     <xacro:include filename="onrobot_2fg7_urdf.xacro" />

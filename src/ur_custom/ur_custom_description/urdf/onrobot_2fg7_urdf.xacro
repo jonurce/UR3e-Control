@@ -5,51 +5,6 @@
     <color rgba="0.700 0.700 0.700 1.000"/>
   </material>
 
-
-  <gazebo reference="onrobot_2fg7_base_link">
-    <material>Gazebo/Grey</material>
-    <implicitSpringDamper>1</implicitSpringDamper>
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <kp>100000000.0</kp>
-    <kd>1.0</kd>
-    <selfCollide>true</selfCollide>
-    <gravity>true</gravity>
-  </gazebo>
-
-  <gazebo reference="right_finger_link">
-    <material>Gazebo/Grey</material>
-    <implicitSpringDamper>1</implicitSpringDamper>
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <kp>100000000.0</kp>
-    <kd>1.0</kd>
-    <selfCollide>true</selfCollide>
-  </gazebo>
-
-  <gazebo reference="left_finger_link">
-    <material>Gazebo/Grey</material>
-    <implicitSpringDamper>1</implicitSpringDamper>
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <kp>100000000.0</kp>
-    <kd>1.0</kd>
-    <selfCollide>true</selfCollide>
-  </gazebo>
-
-  <!--
-  <transmission name="left_finger_joint_tran">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="left_finger_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="left_finger_joint_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  -->
-
   <link name="onrobot_2fg7_base_link">
     <inertial>
       <origin rpy="0 0 0" xyz="-4.898915958379213e-05 2.84756960271082e-06 0.06811082379774974"/>
@@ -137,34 +92,5 @@
     <child link="onrobot_2fg7_base_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-
-
-  <gazebo>
-    <plugin filename="libgazebo_grasp_fix.so" name="gazebo_grasp_fix">
-      <arm>
-        <arm_name>2FG7</arm_name>
-        <palm_link>onrobot_2fg7_base_link</palm_link>
-        <gripper_link>left_finger_link</gripper_link>
-        <gripper_link>right_finger_link</gripper_link>
-      </arm>
-      <forces_angle_tolerance>80</forces_angle_tolerance>
-      <update_rate>10</update_rate>
-      <grip_count_threshold>1</grip_count_threshold>
-      <max_grip_count>3</max_grip_count>
-      <release_tolerance>0.01</release_tolerance>
-      <disable_collisions_on_attach>false</disable_collisions_on_attach>
-      <contact_topic>__default_topic__</contact_topic>
-    </plugin>
-  </gazebo>
-
-  <!-- loading plugin: mimic joints works in gazebo now -->
-  <gazebo>
-    <plugin filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so" name="mimic_2FG7">
-      <joint>left_finger_joint</joint>
-      <mimicJoint>right_finger_joint</mimicJoint>
-      <multiplier>1.0</multiplier>
-      <offset>0.0</offset>
-    </plugin>
-  </gazebo>
 
 </robot>

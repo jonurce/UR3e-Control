@@ -12,8 +12,6 @@
   <exec_depend>robotiq_description</exec_depend>
   <exec_depend>ur_description</exec_depend>
 
-  <depend>gazebo_ros</depend>
-  <depend>ros_gz_sim</depend>
   <depend>xacro</depend>
   <depend>ros2_control</depend>
   <depend>ros2_controllers</depend>
