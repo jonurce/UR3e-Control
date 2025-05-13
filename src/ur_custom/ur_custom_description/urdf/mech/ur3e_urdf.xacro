@@ -24,7 +24,7 @@
     <visual>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/visual/base.dae"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/visual/base.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -33,7 +33,7 @@
     <collision>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/collision/base.stl"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/collision/base.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -47,7 +47,7 @@
     <visual>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/visual/shoulder.dae"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/visual/shoulder.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -56,7 +56,7 @@
     <collision>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/collision/shoulder.stl"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/collision/shoulder.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -70,7 +70,7 @@
     <visual>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.12"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/visual/upperarm.dae"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/visual/upperarm.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -79,7 +79,7 @@
     <collision>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.12"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/collision/upperarm.stl"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/collision/upperarm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -93,7 +93,7 @@
     <visual>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.027"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/visual/forearm.dae"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/visual/forearm.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -102,7 +102,7 @@
     <collision>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.027"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/collision/forearm.stl"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/collision/forearm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -117,7 +117,7 @@
       <!-- TODO: Move this to a parameter -->
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.104"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/visual/wrist1.dae"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/visual/wrist1.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -126,7 +126,7 @@
     <collision>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.104"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/collision/wrist1.stl"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/collision/wrist1.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -140,7 +140,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 -0.08535"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/visual/wrist2.dae"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/visual/wrist2.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -149,7 +149,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 -0.08535"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/collision/wrist2.stl"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/collision/wrist2.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -163,7 +163,7 @@
     <visual>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.0921"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/visual/wrist3.dae"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/visual/wrist3.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -172,7 +172,7 @@
     <collision>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.0921"/>
       <geometry>
-        <mesh filename="package://ur_description/meshes/ur3e/collision/wrist3.stl"/>
+        <mesh filename="package://ur_custom_description/meshes/ur3e/collision/wrist3.stl"/>
       </geometry>
     </collision>
     <inertial>

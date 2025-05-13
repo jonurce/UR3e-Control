@@ -12,8 +12,6 @@ endif()
 
 # Locate and configure packages required by the project.
 find_package(ament_cmake REQUIRED)
-find_package(robotiq_description REQUIRED)
-find_package(ur_description REQUIRED)
 find_package(xacro REQUIRED)
 
 # Install directories
