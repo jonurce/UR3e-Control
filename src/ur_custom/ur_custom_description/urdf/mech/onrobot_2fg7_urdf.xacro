@@ -86,7 +86,6 @@
     <mimic joint="left_finger_joint" multiplier="1.0"/>
   </joint>
 
-  <!-- <link name="base_link"/> -->
   <joint name="world_joint" type="fixed">
     <parent link="tool0"/>
     <child link="onrobot_2fg7_base_link"/>
