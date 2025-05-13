@@ -4,8 +4,13 @@
   <link name="l515_base">
     <visual>
       <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
+      <!--
       <geometry>
         <cylinder radius="0.03" length="0.04"/>
+      </geometry>
+      -->
+      <geometry>
+        <mesh filename="package://ur_custom_description/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="1 1 1"/>
       </geometry>
       <material name="black">
         <color rgba="0.0 0.0 0.0 1.0"/>

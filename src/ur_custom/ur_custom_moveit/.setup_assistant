@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur_custom_description
+    relative_path: urdf/robots/ur3e_onrobot_2fg7_urdf.xacro
+  SRDF:
+    relative_path: config/ur3e_onrobot_2fg7.srdf
+  CONFIG:
+    author_name: Jon Urcelay
+    author_email: jonur@stud.ntnu.no
+    generated_timestamp: 1734048000
