@@ -5,7 +5,7 @@
   <version>0.0.0</version>
   <description>MoveIt configuration, launch files, and SRDF files for ur3e robot</description>
   <maintainer email="jonur@stud.ntnu.no">jon</maintainer>
-  <license>TODO: License declaration</license>
+  <license>BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
@@ -16,7 +16,6 @@
   <depend>moveit_ros_visualization</depend>
   <depend>rviz2</depend>
   <depend>rviz_visual_tools</depend>
-  <depend>rclcpp</depend>
 
   <exec_depend>moveit_simple_controller_manager</exec_depend>
   <exec_depend>moveit_configs_utils</exec_depend>

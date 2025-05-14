@@ -8,24 +8,22 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
-find_package(rclcpp REQUIRED)
+find_package(moveit_ros_move_group REQUIRED)
+find_package(moveit_kinematics REQUIRED)
+find_package(moveit_planners_ompl REQUIRED)
+find_package(moveit_ros_visualization REQUIRED)
+find_package(rviz2 REQUIRED)
+find_package(rviz_visual_tools REQUIRED)
 
-add_executable(ur_custom_moveit src/hello_moveit.cpp)
-target_include_directories(ur_custom_moveit PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
-target_compile_features(ur_custom_moveit PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
-ament_target_dependencies(
-  ur_custom_moveit
-  "moveit_ros_planning_interface"
-  "rclcpp"
+# Copy necessary files to designated locations in the project
+install (
+        DIRECTORY config launch rviz
+        DESTINATION share/${PROJECT_NAME}
 )
 
-install(TARGETS ur_custom_moveit
-  DESTINATION lib/${PROJECT_NAME})
-
-# Install directories
-install(DIRECTORY config include launch rviz src
+# Install the .setup_assistant file
+install(
+        FILES .setup_assistant
         DESTINATION share/${PROJECT_NAME}
 )
 
