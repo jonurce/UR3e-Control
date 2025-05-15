@@ -13,7 +13,7 @@ def generate_launch_description():
     # Declare launch argument for the URDF/Xacro file
     model_arg = DeclareLaunchArgument(
         name='model',
-        default_value=os.path.join(pkg_share, 'urdf', 'robots', 'ur3e_2fg7_l515.xacro'),
+        default_value=os.path.join(pkg_share, 'urdf', 'robots', 'ur3e_2fg7_l515.urdf.xacro'),
         description='Path to robot URDF/Xacro file'
     )
 
@@ -52,6 +52,7 @@ def generate_launch_description():
     return LaunchDescription([
         model_arg,
         robot_state_publisher,
+        joint_state_publisher,
         joint_state_publisher_gui,
         rviz_node
     ])

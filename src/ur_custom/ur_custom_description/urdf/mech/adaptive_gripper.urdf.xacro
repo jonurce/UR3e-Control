@@ -13,6 +13,10 @@
 
   <xacro:macro name="adaptive_gripper" params="parent prefix *origin">
 
+    <material name="silver">
+      <color rgba="0.600 0.600 0.600 1.000"/>
+    </material>
+
     <link name="${prefix}gripper_base">
       <inertial>
         <origin xyz="-4.898915958379213e-05 2.84756960271082e-06 0.06811082379774974" rpy="0 0 0"/>
@@ -24,9 +28,10 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/visual/base_link.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/base_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="0 0 0" rpy="0 0 0"/>
+        <material name="silver"/>
       </visual>
       <collision>
         <geometry>
@@ -53,13 +58,14 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/left_finger_link.stl"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/left_finger_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="-0.032239 0.029494 -0.12005" rpy="0 0 0"/>
+        <material name="silver"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/left_finger_link.stl"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/left_finger_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="-0.032239 0.029494 -0.12005" rpy="0 0 0"/>
       </collision>
@@ -76,13 +82,14 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/right_finger_link.stl"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/right_finger_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="0.054361 0.029494 -0.12005" rpy="0 0 0"/>
+        <material name="silver"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/right_finger_link.stl"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/right_finger_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="0.054361 0.029494 -0.12005" rpy="0 0 0"/>
       </collision>

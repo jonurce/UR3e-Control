@@ -3,6 +3,7 @@
   <xacro:arg name="use_camera" default="true"/>
   <xacro:arg name="use_gazebo" default="true"/>
   <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="flange_link" default="link6_flange"/>
 
   <xacro:if value="${'true' == '$(arg use_camera)' and 'true' == '$(arg use_gazebo)'}">
 
@@ -17,7 +18,7 @@
 
 
     <joint name="camera_joint" type="fixed">
-      <parent link="tool0"/>
+      <parent link="$(arg prefix)$(arg flange_link)"/>
       <child link="camera" />
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
@@ -35,7 +36,7 @@
       <collision>
         <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
         <geometry>
-          <box size="${l515_cam_depth} ${l515_cam_width} ${l515_cam_height}"/>
+          <mesh filename="package://ur_custom_description/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -101,8 +102,8 @@
           </clip>
         </camera>
         <always_on>1</always_on>
-        <gz_frame_id>camera_head_link</gz_frame_id>
-        <topic>camera_head</topic>
+        <gz_frame_id>camera</gz_frame_id>
+        <topic>camera</topic>
         <update_rate>5</update_rate>
         <visualize>true</visualize>
       </sensor>
