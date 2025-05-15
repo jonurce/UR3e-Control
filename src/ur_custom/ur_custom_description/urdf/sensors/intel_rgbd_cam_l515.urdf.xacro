@@ -7,27 +7,26 @@
 
   <xacro:if value="${'true' == '$(arg use_camera)' and 'true' == '$(arg use_gazebo)'}">
 
-  <xacro:property name="M_PI" value="3.1415926535897931" />
+     <xacro:property name="M_PI" value="3.1415926535897931" />
 
-  <xacro:property name="l515_cam_width" value="0.061"/>
-  <xacro:property name="l515_cam_height" value="0.061"/>
-  <xacro:property name="l515_cam_depth" value="0.026"/>
+     <xacro:property name="l515_cam_width" value="0.061"/>
+     <xacro:property name="l515_cam_height" value="0.061"/>
+     <xacro:property name="l515_cam_depth" value="0.026"/>
 
-  <xacro:property name="l515_cam_depth_to_infra_offset" value="0.0"/>
-  <xacro:property name="l515_cam_depth_to_color_offset" value="0.012"/>
-
+     <xacro:property name="l515_cam_depth_to_infra_offset" value="0.0"/>
+     <xacro:property name="l515_cam_depth_to_color_offset" value="0.012"/>
 
     <joint name="camera_joint" type="fixed">
       <parent link="$(arg prefix)$(arg flange_link)"/>
-      <child link="camera" />
+      <child link="camera_link" />
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
 
-    <link name="camera">
+    <link name="camera_link">
       <visual>
         <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
         <geometry>
-          <mesh filename="package://ur_custom_description/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="aluminum">
           <color rgba="0.5 0.5 0.5 1"/>
@@ -36,7 +35,7 @@
       <collision>
         <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
         <geometry>
-          <mesh filename="package://ur_custom_description/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -48,9 +47,10 @@
 
     <joint name="camera_depth_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="camera"/>
+      <parent link="camera_link"/>
       <child link="camera_depth_frame" />
     </joint>
+
     <link name="camera_depth_frame"/>
 
     <joint name="camera_depth_optical_joint" type="fixed">
@@ -58,13 +58,15 @@
       <parent link="camera_depth_frame" />
       <child link="camera_depth_optical_frame" />
     </joint>
+
     <link name="camera_depth_optical_frame"/>
 
     <joint name="camera_infra_joint" type="fixed">
       <origin xyz="0 ${l515_cam_depth_to_infra_offset} 0" rpy="0 0 0" />
-      <parent link="camera" />
+      <parent link="camera_link"/>
       <child link="camera_infra_frame" />
     </joint>
+
     <link name="camera_infra_frame"/>
 
     <joint name="camera_infra_optical_joint" type="fixed">
@@ -72,13 +74,15 @@
       <parent link="camera_infra_frame" />
       <child link="camera_infra_optical_frame" />
     </joint>
+
     <link name="camera_infra_optical_frame"/>
 
     <joint name="camera_color_joint" type="fixed">
       <origin xyz="0 ${l515_cam_depth_to_color_offset} 0" rpy="0 0 0" />
-      <parent link="camera" />
+      <parent link="camera_link" />
       <child link="camera_color_frame" />
     </joint>
+
     <link name="camera_color_frame"/>
 
     <joint name="camera_color_optical_joint" type="fixed">
@@ -86,10 +90,11 @@
       <parent link="camera_color_frame" />
       <child link="camera_color_optical_frame" />
     </joint>
+
     <link name="camera_color_optical_frame"/>
 
-    <gazebo reference="camera">
-      <sensor name="camera_rgbd" type="rgbd_camera">
+    <gazebo reference="camera_link">
+      <sensor name="camera" type="rgbd_camera">
         <camera>
           <horizontal_fov>1.5184</horizontal_fov>
           <image>
@@ -102,7 +107,7 @@
           </clip>
         </camera>
         <always_on>1</always_on>
-        <gz_frame_id>camera</gz_frame_id>
+        <gz_frame_id>camera_link</gz_frame_id>
         <topic>camera</topic>
         <update_rate>5</update_rate>
         <visualize>true</visualize>
