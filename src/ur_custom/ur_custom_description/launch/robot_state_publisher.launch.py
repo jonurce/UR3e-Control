@@ -115,7 +115,7 @@ def generate_launch_description():
     """
     # Define filenames
     urdf_package = 'ur_custom_description'
-    urdf_filename = 'ur3e_onrobot_2fg7_urdf.xacro'
+    urdf_filename = 'ur3e_2fg7_l515.xacro'
     rviz_config_filename = 'urdf.rviz'
 
     # Set paths to important files
