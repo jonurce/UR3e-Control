@@ -89,10 +89,10 @@ ARGUMENTS = [
                           description='Name of the flange link'),
     DeclareLaunchArgument('gripper_type', default_value='adaptive_gripper',
                           description='Type of the gripper'),
-    DeclareLaunchArgument('use_camera', default_value='true',
+    DeclareLaunchArgument('use_camera', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to use the RGBD Gazebo plugin for point cloud'),
-    DeclareLaunchArgument('use_gazebo', default_value='true',
+    DeclareLaunchArgument('use_gazebo', default_value='false',
                           choices=['true', 'false'],
                           description='Whether to use Gazebo simulation'),
     DeclareLaunchArgument('use_gripper', default_value='true',
@@ -102,10 +102,10 @@ ARGUMENTS = [
 
 
 def generate_launch_description():
-    """Generate the launch description for the mycobot robot visualization.
+    """Generate the launch description for the robot visualization.
 
     This function sets up all necessary nodes and parameters for visualizing
-    the mycobot robot in RViz, including:
+    the robot in RViz, including:
     - Robot state publisher for broadcasting transforms
     - Joint state publisher for simulating joint movements
     - RViz for visualization

@@ -40,11 +40,13 @@
     <gravity>0.0 0.0 -9.8</gravity>
 
     <!-- Include a model of the Sun from an external URI -->
+    <!--
     <include>
       <uri>
         https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun
       </uri>
     </include>
+    -->
 
     <!-- Local Ground Plane with modified friction -->
     <model name="ground_plane">
