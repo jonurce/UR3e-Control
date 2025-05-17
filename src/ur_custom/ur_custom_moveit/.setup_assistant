@@ -1,9 +1,9 @@
 moveit_setup_assistant_config:
   URDF:
     package: ur_custom_description
-    relative_path: urdf/robots/ur3e_onrobot_2fg7_urdf.xacro
+    relative_path: urdf/robots/ur3e_2fg7_l515.urdf.xacro
   SRDF:
-    relative_path: config/ur3e_onrobot_2fg7.srdf
+    relative_path: config/ur3e_2fg7_l515/ur3e_2fg7_l515.srdf
   CONFIG:
     author_name: Jon Urcelay
     author_email: jonur@stud.ntnu.no

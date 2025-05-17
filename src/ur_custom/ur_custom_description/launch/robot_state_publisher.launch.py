@@ -89,10 +89,10 @@ ARGUMENTS = [
                           description='Name of the flange link'),
     DeclareLaunchArgument('gripper_type', default_value='adaptive_gripper',
                           description='Type of the gripper'),
-    DeclareLaunchArgument('use_camera', default_value='false',
+    DeclareLaunchArgument('use_camera', default_value='true',
                           choices=['true', 'false'],
                           description='Whether to use the RGBD Gazebo plugin for point cloud'),
-    DeclareLaunchArgument('use_gazebo', default_value='false',
+    DeclareLaunchArgument('use_gazebo', default_value='true',
                           choices=['true', 'false'],
                           description='Whether to use Gazebo simulation'),
     DeclareLaunchArgument('use_gripper', default_value='true',
@@ -152,7 +152,7 @@ def generate_launch_description():
 
     declare_use_jsp_cmd = DeclareLaunchArgument(
         name='use_jsp',
-        default_value='false',
+        default_value='true',
         choices=['true', 'false'],
         description='Enable the joint state publisher')
 
@@ -163,7 +163,7 @@ def generate_launch_description():
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         name='use_sim_time',
-        default_value='false',
+        default_value='true',
         description='Use simulation (Gazebo) clock if true')
 
     robot_description_content = ParameterValue(Command([
