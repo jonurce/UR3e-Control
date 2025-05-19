@@ -30,9 +30,9 @@ def generate_launch_description():
             ]
             # Define Cartesian poses (x, y, z in meters; roll, pitch, yaw in radians)
             self.poses = {
-                '1': [0.0, -0.36, 0.693, -1.57, 0.0, -3.14],
+                '1': [0.3, -0.36, 0.5, -3.14, -1.56, -1.57],
                 '2': [0.0, -0.4, 0.4, -1.57, 0.0, -3.14],
-                '3': [0.14, -0.353, 0.662, -1.239, 0.727, -1.863]
+                '3': [0.0, -0.36, 0.69, 0.0, -2.22, 2.22]
             }
             self.get_logger().info('JointTrajectoryPublisher initialized.')
             self.get_logger().info('Enter 1, 2, or 3 to publish poses. Enter q to quit.')
@@ -66,7 +66,14 @@ def generate_launch_description():
             Input: pose = [x, y, z, roll, pitch, yaw]
             Output: joint angles [theta1, theta2, ..., theta6] or None if failed
             """
+
             x, y, z, roll, pitch, yaw = pose
+            # Apply 180-degree rotation around z-axis
+            x_new = -x  # Invert x
+            y_new = -y  # Invert y
+            z_new = z   # z unchanged
+            yaw_new = yaw + math.pi if yaw <= 0 else yaw - math.pi  # Adjust yaw by π
+
             # Create PoseStamped message
             target_pose = PoseStamped()
             target_pose.header.frame_id = 'base_link'  # Adjust if your base frame is different
@@ -83,7 +90,7 @@ def generate_launch_description():
 
             # Create IK request
             ik_request = GetPositionIK.Request()
-            ik_request.ik_request.group_name = 'manipulator'  # Adjust if your planning group is different
+            ik_request.ik_request.group_name = 'ur_manipulator'  # Adjust if your planning group is different
             ik_request.ik_request.robot_state.joint_state.name = self.joint_names
             ik_request.ik_request.robot_state.joint_state.position = [0.0] * len(self.joint_names)  # Initial guess
             ik_request.ik_request.pose_stamped = target_pose
@@ -127,7 +134,7 @@ def generate_launch_description():
     node = JointTrajectoryPublisher()
     try:
         while rclpy.ok():
-            user_input = input("Enter 1, 2, or 3 to publish poses. Enter q to quit: ")
+            user_input = input("Enter 1, 2, 3 to publish poses. Enter q to quit: ")
             if user_input in node.poses:
                 joint_angles = node.compute_ik(node.poses[user_input])
                 if joint_angles:
