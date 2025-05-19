@@ -148,6 +148,8 @@ def generate_launch_description():
             condition=IfCondition(use_rviz),
             event_handler=OnProcessExit(
                 target_action=start_rviz_node_cmd,
+
+
                 on_exit=EmitEvent(event=Shutdown(reason='rviz exited')),
             ),
         )

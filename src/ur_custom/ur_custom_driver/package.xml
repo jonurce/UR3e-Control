@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>ur_custom</name>
+  <name>ur_custom_driver</name>
   <version>0.0.0</version>
-  <description>Combines URxe robotic arms made by Universal Robots with a gripper and camera (metapackage).</description>
+  <description>Testing to send point to ur robot driver</description>
   <maintainer email="jonur@stud.ntnu.no">jon</maintainer>
   <license>BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>ur_custom_bringup</exec_depend>
-  <exec_depend>ur_custom_description</exec_depend>
-  <exec_depend>ur_custom_driver</exec_depend>
-  <exec_depend>ur_custom_gazebo</exec_depend>
-  <exec_depend>ur_custom_moveit</exec_depend>
+  <depend>rclpy</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>moveit_msgs</depend>
+  <depend>geometry_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
