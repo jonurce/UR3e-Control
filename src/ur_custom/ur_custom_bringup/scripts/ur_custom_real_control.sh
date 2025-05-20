@@ -12,7 +12,7 @@ trap 'cleanup' SIGINT SIGTERM
 
 #ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.0.100 initial_joint_controller:=joint_trajectory_controller &
 
-ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.0.100 launch_rviz:=false use_mock_hardware:=true &
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.0.100 launch_rviz:=false use_mock_hardware:=false &
 
 sleep 15
 
@@ -22,7 +22,7 @@ ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur3e &
 
 sleep 10
 
-ros2 launch ur_custom_driver choice_point_ik.launch.py
+ros2 launch ur_custom_driver choice_point_ik_improved.launch.py
 
 # Keep the script running until Ctrl+C
 wait

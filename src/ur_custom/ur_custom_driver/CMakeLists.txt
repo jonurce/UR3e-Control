@@ -15,7 +15,7 @@ find_package(geometry_msgs REQUIRED)
 
 # Copy necessary files to designated locations in the project
 install (
-        DIRECTORY launch config
+        DIRECTORY launch
         DESTINATION share/${PROJECT_NAME}
 )
 
