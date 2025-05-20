@@ -30,9 +30,9 @@ def generate_launch_description():
             ]
             # Define Cartesian poses (x, y, z in meters; roll, pitch, yaw in radians)
             self.poses = {
-                '1': [0.3, -0.36, 0.5, -3.14, -1.56, -1.57],
+                '1': [0.155, -0.095, 0.575, 2.6, 0.96, 0.848],
                 '2': [0.0, -0.4, 0.4, -1.57, 0.0, -3.14],
-                '3': [0.0, -0.36, 0.69, 0.0, -2.22, 2.22]
+                '3': [-0.1, -0.2, 0.3, 2.6, 0.96, 0.848]
             }
             self.get_logger().info('JointTrajectoryPublisher initialized.')
             self.get_logger().info('Enter 1, 2, or 3 to publish poses. Enter q to quit.')
@@ -78,11 +78,11 @@ def generate_launch_description():
             target_pose = PoseStamped()
             target_pose.header.frame_id = 'base_link'  # Adjust if your base frame is different
             target_pose.header.stamp = self.get_clock().now().to_msg()
-            target_pose.pose.position.x = x
-            target_pose.pose.position.y = y
-            target_pose.pose.position.z = z
+            target_pose.pose.position.x = x_new
+            target_pose.pose.position.y = y_new
+            target_pose.pose.position.z = z_new
             # Convert roll, pitch, yaw to quaternion
-            quaternion = self.rpy_to_quaternion(roll, pitch, yaw)
+            quaternion = self.rpy_to_quaternion(roll, pitch, yaw_new)
             target_pose.pose.orientation.x = quaternion[0]
             target_pose.pose.orientation.y = quaternion[1]
             target_pose.pose.orientation.z = quaternion[2]
