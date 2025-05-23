@@ -1,3 +1,3 @@
-# ur_robotiq #
+# ur_custom #
 
-The ur_robotiq package is a metapackage. It contains lists of dependencies to other packages.
+The ur_custom package is a metapackage. It contains lists of dependencies to other packages.

@@ -7,9 +7,11 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(ur_robot_driver REQUIRED)
+find_package(ur_moveit_config REQUIRED)
+find_package(ur_custom_description REQUIRED)
+find_package(ur_custom_driver REQUIRED)
+find_package(xacro REQUIRED)
 
 # Copy necessary files to designated locations in the project
 install (

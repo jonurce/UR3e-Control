@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="ur3e" xmlns:xacro="http://www.ros.org/xacro">
+
+  <!-- Include the main URDF macro -->
+  <xacro:include filename="$(find ur_robot_driver)/urdf/ur.urdf.xacro" />
+
+  <!-- Define the gripper -->
+  <xacro:include filename="$(find ur_custom_description)/urdf/mech/gripper.urdf.xacro"/>
+  <xacro:gripper
+      parent="tool0"
+      prefix="">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:gripper>
+
+  <!-- Define the camera -->
+  <xacro:include filename="$(find ur_custom_description)/urdf/sensors/camera.urdf.xacro"/>
+
+</robot>

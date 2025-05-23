@@ -8,10 +8,14 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclpy REQUIRED)
-find_package(trajectory_msgs REQUIRED)
-find_package(std_msgs REQUIRED)
+find_package(ur_robot_driver REQUIRED)
+find_package(ur_moveit_config REQUIRED)
 find_package(moveit_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(shape_msgs REQUIRED)
+find_package(xacro REQUIRED)
 
 # Copy necessary files to designated locations in the project
 install (

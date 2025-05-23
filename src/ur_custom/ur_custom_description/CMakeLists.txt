@@ -13,9 +13,11 @@ endif()
 # Locate and configure packages required by the project.
 find_package(ament_cmake REQUIRED)
 find_package(xacro REQUIRED)
+find_package(ur_description REQUIRED)
+find_package(ur_moveit_config REQUIRED)
 
 # Install directories
-install(DIRECTORY urdf meshes launch rviz
+install(DIRECTORY meshes srdf urdf
         DESTINATION share/${PROJECT_NAME}
 )
 

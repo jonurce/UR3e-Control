@@ -9,13 +9,17 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>rclpy</depend>
-  <depend>trajectory_msgs</depend>
-  <depend>std_msgs</depend>
+  <depend>ur_robot_driver</depend>
+  <depend>ur_moveit_config</depend>
   <depend>moveit_msgs</depend>
   <depend>geometry_msgs</depend>
-  <depend>moveit_py</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>std_msgs</depend>
   <depend>shape_msgs</depend>
+  <depend>rclpy</depend>
+  <depend>xacro</depend>
+  <depend>moveit_py</depend>
+  <depend>moveit_configs_utils</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

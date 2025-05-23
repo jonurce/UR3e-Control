@@ -12,8 +12,6 @@
   <exec_depend>ur_custom_bringup</exec_depend>
   <exec_depend>ur_custom_description</exec_depend>
   <exec_depend>ur_custom_driver</exec_depend>
-  <exec_depend>ur_custom_gazebo</exec_depend>
-  <exec_depend>ur_custom_moveit</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
