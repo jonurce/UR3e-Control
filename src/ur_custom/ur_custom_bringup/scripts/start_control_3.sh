@@ -10,19 +10,21 @@ cleanup() {
 # Set up cleanup trap
 trap 'cleanup' SIGINT SIGTERM
 
-#ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.0.100 use_tool_communication:=true launch_rviz:=true use_mock_hardware:=false description_launchfile:=/home/jon/Workspace/swap_ws/src/ur_custom/ur_custom_driver/launch/ur_custom_rsp.launch.py &
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.0.100 launch_rviz:=false use_mock_hardware:=false description_launchfile:=/home/jon/Workspace/swap_ws/src/ur_custom/ur_custom_driver/launch/ur_custom_rsp.launch.py &
 
-ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.137.101
+sleep 15
+
+ros2 launch ur_custom_driver ur_custom_moveit.launch.py ur_type:=ur3e launch_rviz:=true &
+
+sleep 10
+
+ros2 launch ur_custom_driver choice_ik_2.launch.py
+
+ros2 launch onrobot_2fg7 onrobot_launch.py ip:="192.168.0.100"
+
+ros2 service call /grip_external onrobot_msgs/srv/GripExternal "{index: 0, width: 0.0, force: 20, speed: 10, is_wait: true}"
 
 
-#sleep 10
-#ros2 run ur_custom_driver gripper_test.py
-
-#sleep 15
-#ros2 launch ur_custom_driver ur_custom_moveit.launch.py ur_type:=ur3e launch_rviz:=true &
-
-#sleep 10
-#ros2 launch ur_custom_driver choice_ik_2.launch.py
 
 # Keep the script running until Ctrl+C
 wait
