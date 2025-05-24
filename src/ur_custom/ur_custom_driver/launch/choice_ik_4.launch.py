@@ -8,12 +8,14 @@ from geometry_msgs.msg import PoseStamped, Vector3, Quaternion
 from shape_msgs.msg import SolidPrimitive
 from moveit_msgs.msg import PlanningScene, CollisionObject
 from shape_msgs.msg import Plane
+from onrobot_msgs.srv import GripExternal
 import math
+import time
 
-# This launch file performs IK with collision avoidance for floor, gripper and camera, as well as motion planning
-# It gives the user pose options to select
+# This launch file performs IK with collision avoidance for floor, gripper and camera, as well as motion planning.
+# It gives the user pose options to select, as well as to open or close the gripper.
+# For each pose, it creates a middle point, from which it generates a linear trajectory to the final point.
 def generate_launch_description():
-    # Define the node class inline
     class JointTrajectoryPublisher(Node):
         def __init__(self):
             super().__init__('joint_trajectory_publisher')
@@ -25,9 +27,11 @@ def generate_launch_description():
             self.ik_client = self.create_client(GetPositionIK, '/compute_ik')
             self.planning_scene_client = self.create_client(ApplyPlanningScene, '/apply_planning_scene')
             self.plan_client = self.create_client(GetMotionPlan, '/plan_kinematic_path')
+            self.gripper_client = self.create_client(GripExternal, '/grip_external')
             for client, name in [(self.ik_client, '/compute_ik'),
                                  (self.planning_scene_client, '/apply_planning_scene'),
-                                 (self.plan_client, '/plan_kinematic_path')]:
+                                 (self.plan_client, '/plan_kinematic_path'),
+                                 (self.gripper_client, '/grip_external')]:
                 if not client.wait_for_service(timeout_sec=10.0):
                     self.get_logger().error(f'Service {name} not available after 10s!')
                     return
@@ -40,23 +44,22 @@ def generate_launch_description():
                 'wrist_2_joint',
                 'wrist_3_joint'
             ]
-            # Define Cartesian poses (x, y, z in meters; roll, pitch, yaw in radians)
             self.poses = {
-                '1': [0.155, -0.095, 0.575, 2.6, 0.96, 0.848],
-                '2': [0.0, -0.4, 0.4, -1.57, 0.0, -3.14],
+                '1': [0.2, -0.15, 0.475, 2.6, 0.96, 0.848],  # Final pose
+                '2': [0.0, -0.5, 0.4, -1.57, 0.0, -3.14],
                 '3': [-0.2, -0.2, 0.3, 2.6, 0.96, 0.848]
             }
-            # Apply floor collision object during initialization
+            self.middle_poses = {
+                '1': [0.2, -0.3, 0.375, 2.6, 0.96, 0.848],
+                '2': [0.0, -0.4, 0.4, -1.57, 0.0, -3.14],
+                '3': [-0.2, -0.2, 0.4, 2.6, 0.96, 0.848]
+            }
             self.apply_floor_collision()
             self.get_logger().info('JointTrajectoryPublisher initialized.')
-            self.get_logger().info('Enter 1, 2, 3 to publish poses. Enter q to quit.')
+            self.get_logger().info('Enter 1, 2, 3 for poses, o to open gripper, c to close, q to quit.')
 
         def apply_floor_collision(self):
-            """
-            Apply a floor plane at z=0.02 as a collision object to the planning scene.
-            """
             try:
-                # Create collision object for the floor
                 collision_object = CollisionObject()
                 collision_object.header.frame_id = 'base_link'
                 collision_object.id = 'floor'
@@ -64,13 +67,9 @@ def generate_launch_description():
                 plane.coef = [0.0, 0.0, 1.0, -0.05]
                 collision_object.planes = [plane]
                 collision_object.operation = CollisionObject.ADD
-
-                # Create PlanningScene
                 planning_scene = PlanningScene()
                 planning_scene.world.collision_objects = [collision_object]
                 planning_scene.is_diff = True
-
-                # Call ApplyPlanningScene service
                 scene_request = ApplyPlanningScene.Request()
                 scene_request.scene = planning_scene
                 future = self.planning_scene_client.call_async(scene_request)
@@ -86,24 +85,41 @@ def generate_launch_description():
                 self.get_logger().error(f'Failed to apply planning scene: {str(e)}')
                 return False
 
+        def grip_external(self, width, force=20, speed=10, is_wait=True):
+            try:
+                request = GripExternal.Request()
+                request.index = 0
+                request.width = width
+                request.force = force
+                request.speed = speed
+                request.is_wait = is_wait
+                future = self.gripper_client.call_async(request)
+                rclpy.spin_until_future_complete(self, future)
+                response = future.result()
+                if response:
+                    self.get_logger().info(f'Gripper set to width={width}mm, force={force}N')
+                    return True
+                else:
+                    self.get_logger().error('Failed to call gripper service')
+                    return False
+            except Exception as e:
+                self.get_logger().error(f'Gripper service call failed: {str(e)}')
+                return False
+
         def publish_trajectory(self, trajectory):
-            """
-            Publish a planned JointTrajectory.
-            """
             try:
                 self.get_logger().info(f'Publishing trajectory with {len(trajectory.points)} points: {trajectory.points[-1].positions}')
                 trajectory.joint_names = self.joint_names
                 self.publisher_.publish(trajectory)
+                # Wait for trajectory execution (approximate, based on trajectory duration)
+                if trajectory.points:
+                    duration = trajectory.points[-1].time_from_start.sec + trajectory.points[-1].time_from_start.nanosec / 1e9
+                    time.sleep(duration + 1.0)  # Add buffer
                 self.get_logger().info('Published trajectory.')
             except Exception as e:
                 self.get_logger().error(f'Failed to publish trajectory: {str(e)}')
 
-        def compute_ik_and_plan(self, pose):
-            """
-            Compute IK and plan a collision-free trajectory to the target pose.
-            Input: pose = [x, y, z, roll, pitch, yaw]
-            Output: JointTrajectory or None if failed
-            """
+        def compute_ik_and_plan(self, pose, use_cartesian=False):
             x, y, z, roll, pitch, yaw = pose
             x_new = -x
             y_new = -y
@@ -125,7 +141,6 @@ def generate_launch_description():
             motion_plan_request.max_velocity_scaling_factor = 0.3
             motion_plan_request.max_acceleration_scaling_factor = 0.3
             constraints = Constraints()
-
             position_constraint = PositionConstraint()
             position_constraint.header.frame_id = 'base_link'
             position_constraint.link_name = 'tool0'
@@ -134,21 +149,25 @@ def generate_launch_description():
             position_constraint.constraint_region.primitive_poses = [target_pose.pose]
             primitive = SolidPrimitive()
             primitive.type = SolidPrimitive.SPHERE
-            primitive.dimensions = [0.001] #radius
+            primitive.dimensions = [0.1] if use_cartesian else [0.001]
             position_constraint.constraint_region.primitives = [primitive]
             constraints.position_constraints = [position_constraint]
-
             orientation_constraint = OrientationConstraint()
             orientation_constraint.header.frame_id = 'base_link'
             orientation_constraint.link_name = 'tool0'
             orientation_constraint.orientation = target_pose.pose.orientation
-            orientation_constraint.absolute_x_axis_tolerance = 0.01 #radians
-            orientation_constraint.absolute_y_axis_tolerance = 0.01
-            orientation_constraint.absolute_z_axis_tolerance = 0.01
+            orientation_constraint.absolute_x_axis_tolerance = 0.3 if use_cartesian else 0.01
+            orientation_constraint.absolute_y_axis_tolerance = 0.3 if use_cartesian else 0.01
+            orientation_constraint.absolute_z_axis_tolerance = 0.3 if use_cartesian else 0.01
             orientation_constraint.weight = 1.0
             constraints.orientation_constraints = [orientation_constraint]
-
-            motion_plan_request.goal_constraints = [constraints]
+            if use_cartesian:
+                motion_plan_request.path_constraints = constraints
+                #motion_plan_request.planner_id = 'RRTConnectkConfigDefault'
+                motion_plan_request.planner_id = 'PRMstar'
+                motion_plan_request.max_cartesian_speed = 0.1
+            else:
+                motion_plan_request.goal_constraints = [ constraints ]
             plan_request = GetMotionPlan.Request()
             plan_request.motion_plan_request = motion_plan_request
             try:
@@ -176,10 +195,22 @@ def generate_launch_description():
                 self.get_logger().error(f'Planning service call failed: {str(e)}')
                 return None
 
+        def plan_to_pose(self, pose_key):
+            middle_pose = self.middle_poses[pose_key]
+            final_pose = self.poses[pose_key]
+            middle_trajectory = self.compute_ik_and_plan(middle_pose, use_cartesian=False)
+            if not middle_trajectory:
+                self.get_logger().error(f'Failed to plan to middle pose {pose_key}')
+                return False
+            self.publish_trajectory(middle_trajectory)
+            final_trajectory = self.compute_ik_and_plan(final_pose, use_cartesian=False)
+            if not final_trajectory:
+                self.get_logger().error(f'Failed to plan to final pose {pose_key}')
+                return False
+            self.publish_trajectory(final_trajectory)
+            return True
+
         def rpy_to_quaternion(self, roll, pitch, yaw):
-            """
-            Convert roll, pitch, yaw to quaternion [x, y, z, w].
-            """
             cy = math.cos(yaw * 0.5)
             sy = math.sin(yaw * 0.5)
             cp = math.cos(pitch * 0.5)
@@ -192,22 +223,23 @@ def generate_launch_description():
             z = cr * cp * sy - sr * sp * cy
             return [x, y, z, w]
 
-    # Initialize rclpy and run the node inline
     rclpy.init()
     node = JointTrajectoryPublisher()
     try:
         while rclpy.ok():
-            user_input = input("Enter 1, 2, 3 to publish poses. Enter q to quit: ")
+            user_input = input("Enter 1, 2, 3 for poses, o to open gripper, c to close, q to quit: ")
             if user_input in node.poses:
-                trajectory = node.compute_ik_and_plan(node.poses[user_input])
-                if trajectory:
-                    node.publish_trajectory(trajectory)
-                else:
-                    node.get_logger().error(f'Failed to plan trajectory for pose {user_input}')
+                success = node.plan_to_pose(user_input)
+                if not success:
+                    node.get_logger().error(f'Failed to execute pose {user_input}')
+            elif user_input == 'o':
+                node.grip_external(width=37.0)
+            elif user_input == 'c':
+                node.grip_external(width=0.0)
             elif user_input == 'q':
                 break
             else:
-                node.get_logger().warn(f'Invalid input: {user_input}. Enter 1, 2, 3, or q.')
+                node.get_logger().warn(f'Invalid input: {user_input}. Enter 1, 2, 3, o, c, or q.')
             rclpy.spin_once(node, timeout_sec=0.1)
     except KeyboardInterrupt:
         node.get_logger().info('Shutting down...')
@@ -217,5 +249,4 @@ def generate_launch_description():
         node.destroy_node()
         rclpy.shutdown()
 
-    # Return an empty LaunchDescription since the node runs inline
     return LaunchDescription([])

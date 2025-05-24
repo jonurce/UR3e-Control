@@ -7,7 +7,7 @@ from moveit_msgs.srv import GetPositionIK
 from geometry_msgs.msg import PoseStamped
 import math
 
-#This launch file makes the IK without collision avoidance and trajectory planning
+#This launch file makes the IK without collision avoidance nor trajectory planning (dangerous)
 def generate_launch_description():
     # Define the node class inline
     class JointTrajectoryPublisher(Node):
