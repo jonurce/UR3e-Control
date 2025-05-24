@@ -20,7 +20,7 @@ sleep 10
 
 #ros2 launch onrobot_2fg7 onrobot_launch.py ip:="192.168.0.100" &
 
-sleep 10
+#sleep 10
 
 ros2 launch ur_custom_driver choice_ik_4.launch.py
 

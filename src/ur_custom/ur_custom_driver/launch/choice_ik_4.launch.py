@@ -2,8 +2,8 @@ from launch import LaunchDescription
 import rclpy
 from rclpy.node import Node
 from trajectory_msgs.msg import JointTrajectory
-from moveit_msgs.srv import GetPositionIK, ApplyPlanningScene, GetMotionPlan
-from moveit_msgs.msg import MotionPlanRequest, Constraints, PositionConstraint, OrientationConstraint, BoundingVolume
+from moveit_msgs.srv import GetPositionIK, ApplyPlanningScene, GetMotionPlan, GetPlanningScene
+from moveit_msgs.msg import MotionPlanRequest, Constraints, PositionConstraint, OrientationConstraint, BoundingVolume, PlanningSceneComponents
 from geometry_msgs.msg import PoseStamped, Vector3, Quaternion
 from shape_msgs.msg import SolidPrimitive
 from moveit_msgs.msg import PlanningScene, CollisionObject
@@ -28,10 +28,12 @@ def generate_launch_description():
             self.planning_scene_client = self.create_client(ApplyPlanningScene, '/apply_planning_scene')
             self.plan_client = self.create_client(GetMotionPlan, '/plan_kinematic_path')
             self.gripper_client = self.create_client(GripExternal, '/grip_external')
+            self.scene_client = self.create_client(GetPlanningScene, '/get_planning_scene')
             for client, name in [(self.ik_client, '/compute_ik'),
                                  (self.planning_scene_client, '/apply_planning_scene'),
                                  (self.plan_client, '/plan_kinematic_path'),
-                                 (self.gripper_client, '/grip_external')]:
+                                 (self.gripper_client, '/grip_external'),
+                                 (self.scene_client, '/get_planning_scene')]:
                 if not client.wait_for_service(timeout_sec=10.0):
                     self.get_logger().error(f'Service {name} not available after 10s!')
                     return
@@ -119,6 +121,22 @@ def generate_launch_description():
             except Exception as e:
                 self.get_logger().error(f'Failed to publish trajectory: {str(e)}')
 
+        def get_current_state(self):
+            try:
+                request = GetPlanningScene.Request()
+                request.components.components = 1  # ROBOT_STATE
+                future = self.scene_client.call_async(request)
+                rclpy.spin_until_future_complete(self, future)
+                response = future.result()
+                if response and response.scene.robot_state.joint_state.name:
+                    self.get_logger().info('Got robot state')
+                    return response.scene.robot_state
+                self.get_logger().error('Invalid planning scene response')
+                return None
+            except Exception as e:
+                self.get_logger().error(f'Failed to get current state: {str(e)}')
+                return None
+
         def compute_ik_and_plan(self, pose, use_cartesian=False):
             x, y, z, roll, pitch, yaw = pose
             x_new = -x
@@ -134,12 +152,21 @@ def generate_launch_description():
             quaternion = self.rpy_to_quaternion(roll, pitch, yaw_new)
             target_pose.pose.orientation = Quaternion(x=quaternion[0], y=quaternion[1], z=quaternion[2], w=quaternion[3])
             self.get_logger().info(f'Target: pos=({x_new:.3f}, {y_new:.3f}, {z_new:.3f}), quat=({quaternion[0]:.3f}, {quaternion[1]:.3f}, {quaternion[2]:.3f}, {quaternion[3]:.3f})')
+
             motion_plan_request = MotionPlanRequest()
             motion_plan_request.group_name = 'ur_manipulator'
             motion_plan_request.num_planning_attempts = 20
             motion_plan_request.allowed_planning_time = 5.0
             motion_plan_request.max_velocity_scaling_factor = 0.3
             motion_plan_request.max_acceleration_scaling_factor = 0.3
+
+            if use_cartesian:
+                current_state = self.get_current_state()
+                if not current_state:
+                    self.get_logger().error('Cannot plan Cartesian path without current state')
+                    return None
+                motion_plan_request.start_state = current_state
+
             constraints = Constraints()
             position_constraint = PositionConstraint()
             position_constraint.header.frame_id = 'base_link'
@@ -163,8 +190,8 @@ def generate_launch_description():
             constraints.orientation_constraints = [orientation_constraint]
             if use_cartesian:
                 motion_plan_request.path_constraints = constraints
-                #motion_plan_request.planner_id = 'RRTConnectkConfigDefault'
-                motion_plan_request.planner_id = 'PRMstar'
+                motion_plan_request.planner_id = 'RRTConnectkConfigDefault'
+                #motion_plan_request.planner_id = 'PRMstar'
                 motion_plan_request.max_cartesian_speed = 0.1
             else:
                 motion_plan_request.goal_constraints = [ constraints ]
@@ -203,7 +230,7 @@ def generate_launch_description():
                 self.get_logger().error(f'Failed to plan to middle pose {pose_key}')
                 return False
             self.publish_trajectory(middle_trajectory)
-            final_trajectory = self.compute_ik_and_plan(final_pose, use_cartesian=False)
+            final_trajectory = self.compute_ik_and_plan(final_pose, use_cartesian=True)
             if not final_trajectory:
                 self.get_logger().error(f'Failed to plan to final pose {pose_key}')
                 return False
