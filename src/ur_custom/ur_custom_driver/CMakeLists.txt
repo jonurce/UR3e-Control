@@ -19,8 +19,13 @@ find_package(xacro REQUIRED)
 
 # Copy necessary files to designated locations in the project
 install (
-        DIRECTORY launch
+        DIRECTORY launch scripts
         DESTINATION share/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+        scripts/onrobot_methods.py
+        DESTINATION lib/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)

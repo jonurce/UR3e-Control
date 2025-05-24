@@ -10,7 +10,7 @@ cleanup() {
 # Set up cleanup trap
 trap 'cleanup' SIGINT SIGTERM
 
-ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.0.100 launch_rviz:=false use_mock_hardware:=false description_launchfile:=/home/jon/Workspace/swap_ws/src/ur_custom/ur_custom_driver/launch/ur_custom_rsp.launch.py &
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.137.101 launch_rviz:=false use_mock_hardware:=false description_launchfile:=/home/jon/Workspace/swap_ws/src/ur_custom/ur_custom_driver/launch/ur_custom_rsp.launch.py &
 
 sleep 15
 

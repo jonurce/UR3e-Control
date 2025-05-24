@@ -20,7 +20,7 @@
 
     <link name="camera">
       <visual>
-        <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
+        <origin rpy="0 0 0" xyz="0 -0.07 0"/>
         <geometry>
           <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.001 0.001 0.001"/>
         </geometry>
@@ -29,9 +29,9 @@
         </material>
       </visual>
       <collision>
-        <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
+        <origin rpy="0 0 0" xyz="0 -0.07 0"/>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.0015 0.0015 0.0015"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.0015 0.0015 0.002"/>
         </geometry>
       </collision>
       <inertial>
