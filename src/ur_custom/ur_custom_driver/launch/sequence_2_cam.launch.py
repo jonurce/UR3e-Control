@@ -12,7 +12,7 @@ from onrobot_msgs.srv import GripExternal
 import math
 import time
 
-# This launch file performs a hardcoded sequence of poses with collision avoidance and motion planning
+# This launch file uses the camera and YOLO model to detect the pose to pick up, and performs a hardcoded pick and place task
 # Each position in the sequence is defined in the 6 coordinates of space. IK is used to solve them
 # Generated trajectories are linear in the joint space or in the coordinate space, depending the pose
 # Collision avoidance for floor, gripper, camera and shelf
