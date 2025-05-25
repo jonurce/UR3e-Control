@@ -12,10 +12,7 @@ from onrobot_msgs.srv import GripExternal
 import math
 import time
 
-# This launch file performs IK with collision avoidance for floor, gripper, camera and shelf, as well as motion planning
-# It gives the user pose options to select, as well as to open or close the gripper
-# For each of the poses, it first moves to a middle point using joints trajectory and then goes to the final points from here using linear trajectory
-
+# This launch file performs a hardcoded sequence of poses with collision avoidance and motion planning
 def generate_launch_description():
     class JointTrajectoryPublisher(Node):
         def __init__(self):
@@ -34,8 +31,7 @@ def generate_launch_description():
                                  (self.planning_scene_client, '/apply_planning_scene'),
                                  (self.plan_client, '/plan_kinematic_path'),
                                  (self.cartesian_client, '/compute_cartesian_path'),
-                                 (self.gripper_client, '/grip_external')
-                                 ]:
+                                 (self.gripper_client, '/grip_external')]:
                 if not client.wait_for_service(timeout_sec=10.0):
                     self.get_logger().error(f'Service {name} not available after 10s!')
                     return
@@ -51,16 +47,24 @@ def generate_launch_description():
             #14cm offset from tool0 to tool in polyscope - In tools z axis (x base)
             #0.6cm offset from tool0 to tool in polyscope - In tools x axis (z base)
             self.poses = {
-                '1': [-0.315+0.14, -0.322, 0.352+0.006, 2.813, -1.525, -2.79],
-                '2': [-0.315+0.14, -0.267, 0.352+0.006, 2.813, -1.525, -2.79]
-            }
-            self.middle_poses = {
-                '1': [-0.261+0.14, -0.322, 0.352+0.006, 2.813, -1.525, -2.79],
-                '2': [-0.261+0.14, -0.267, 0.352+0.006, 2.813, -1.525, -2.79]
+                '1': [-0.261+0.14, -0.322, 0.352+0.006, 2.813, -1.525, -2.79],  # Pose 1: Joint trajectory
+                '2': [-0.315+0.14, -0.322, 0.352+0.006, 2.813, -1.525, -2.79],  # Pose 2: Linear trajectory
+                '3': [-0.200+0.14, -0.322, 0.352+0.006, 2.813, -1.525, -2.79],  # Pose 3: Linear trajectory
+                '4': [-0.200+0.14, -0.274, 0.352+0.006, 2.056, -1.552, -2.036],  # Pose 4: Joint trajectory
+                '5': [-0.323+0.14, -0.274, 0.352+0.006, 2.056, -1.552, -2.036],  # Pose 5: Linear trajectory
+                '6': [-0.200+0.14, -0.274, 0.352+0.006, 2.056, -1.552, -2.036]  # Pose 6: Linear trajectory
             }
             self.apply_collision_objects()
             self.get_logger().info('JointTrajectoryPublisher initialized.')
-            self.get_logger().info('Enter 1 for pose, o to open gripper, c to close, q to quit.')
+            self.get_logger().info('Enter "start" to begin sequence, "q" to quit.')
+
+        def joint_state_callback(self, msg):
+            try:
+                for i, name in enumerate(self.joint_names):
+                    idx = msg.name.index(name)
+                    self.current_joint_positions[i] = msg.position[idx]
+            except ValueError:
+                self.get_logger().warn('Joint state names do not match expected joints.')
 
         def apply_collision_objects(self):
             try:
@@ -81,14 +85,13 @@ def generate_launch_description():
                 shelf_collision.header.frame_id = 'world'
                 shelf_collision.id = 'shelf'
                 shelf_pose = Pose()
-                # Coordinates for box center
                 shelf_pose.position.x = -0.4 * -1
                 shelf_pose.position.y = -0.3 * -1
                 shelf_pose.position.z = 0.21
                 shelf_pose.orientation.w = 1.0
                 shelf_primitive = SolidPrimitive()
                 shelf_primitive.type = SolidPrimitive.BOX
-                shelf_primitive.dimensions = [0.1, 0.12, 0.42]  # Width, depth, height
+                shelf_primitive.dimensions = [0.1, 0.12, 0.42]
                 shelf_collision.primitives = [shelf_primitive]
                 shelf_collision.primitive_poses = [shelf_pose]
                 shelf_collision.operation = CollisionObject.ADD
@@ -158,25 +161,74 @@ def generate_launch_description():
             target_pose.pose.orientation = Quaternion(x=quaternion[0], y=quaternion[1], z=quaternion[2], w=quaternion[3])
             return target_pose
 
-        def compute_ik_and_plan(self, pose_key):
-            middle_pose = self.compute_pose(self.middle_poses[pose_key])
-            self.get_logger().info(f'Middle point: pos=({middle_pose.pose.position.x:.3f}, {middle_pose.pose.position.y:.3f}, {middle_pose.pose.position.z:.3f})')
-            middle_trajectory = self.plan_to_pose(middle_pose)
-            if not middle_trajectory:
-                self.get_logger().error('Failed to plan to middle point.')
-                return None
+        def execute_sequence(self):
+            # Pose 1: Joint trajectory
+            pose1 = self.compute_pose(self.poses['1'])
+            self.get_logger().info(f'Planning joint trajectory to pose 1: pos=({pose1.pose.position.x:.3f}, {pose1.pose.position.y:.3f}, {pose1.pose.position.z:.3f})')
+            traj1 = self.plan_to_pose(pose1)
+            if not traj1:
+                self.get_logger().error('Failed to plan to pose 1.')
+                return False
+            self.publish_trajectory(traj1)
 
-            self.publish_trajectory(middle_trajectory)
+            # Pose 2: Linear trajectory
+            pose2 = self.compute_pose(self.poses['2'])
+            self.get_logger().info(f'Planning linear trajectory to pose 2: pos=({pose2.pose.position.x:.3f}, {pose2.pose.position.y:.3f}, {pose2.pose.position.z:.3f})')
+            traj2 = self.plan_linear_to_pose(pose1, pose2)
+            if not traj2:
+                self.get_logger().error('Failed to plan linear trajectory to pose 2.')
+                return False
+            self.publish_trajectory(traj2)
 
-            final_pose = self.compute_pose(self.poses[pose_key])
-            self.get_logger().info(f'Final point: pos=({final_pose.pose.position.x:.3f}, {final_pose.pose.position.y:.3f}, {final_pose.pose.position.z:.3f})')
-            final_trajectory = self.plan_linear_to_pose(middle_pose, final_pose)
-            if not final_trajectory:
-                self.get_logger().error('Failed to plan linear trajectory to final pose.')
-                return None
+            # Close gripper
+            self.get_logger().info('Closing gripper.')
+            if not self.grip_external(width=0.0):
+                self.get_logger().error('Failed to close gripper.')
+                return False
 
-            self.publish_trajectory(final_trajectory)
-            return final_trajectory
+            # Pose 3: Linear trajectory
+            pose3 = self.compute_pose(self.poses['3'])
+            self.get_logger().info(f'Planning linear trajectory to pose 3: pos=({pose3.pose.position.x:.3f}, {pose3.pose.position.y:.3f}, {pose3.pose.position.z:.3f})')
+            traj3 = self.plan_linear_to_pose(pose2, pose3)
+            if not traj3:
+                self.get_logger().error('Failed to plan linear trajectory to pose 3.')
+                return False
+            self.publish_trajectory(traj3)
+
+            # Pose 4: Joint trajectory
+            pose4 = self.compute_pose(self.poses['4'])
+            self.get_logger().info(f'Planning joint trajectory to pose 4: pos=({pose4.pose.position.x:.3f}, {pose4.pose.position.y:.3f}, {pose4.pose.position.z:.3f})')
+            traj4 = self.plan_to_pose(pose4)
+            if not traj4:
+                self.get_logger().error('Failed to plan to pose 4.')
+                return False
+            self.publish_trajectory(traj4)
+
+            # Pose 5: Linear trajectory
+            pose5 = self.compute_pose(self.poses['5'])
+            self.get_logger().info(f'Planning linear trajectory to pose 5: pos=({pose5.pose.position.x:.3f}, {pose5.pose.position.y:.3f}, {pose5.pose.position.z:.3f})')
+            traj5 = self.plan_linear_to_pose(pose4, pose5)
+            if not traj5:
+                self.get_logger().error('Failed to plan linear trajectory to pose 5.')
+                return False
+            self.publish_trajectory(traj5)
+
+            # Open gripper
+            self.get_logger().info('Opening gripper.')
+            if not self.grip_external(width=37.0):
+                self.get_logger().error('Failed to open gripper.')
+                return False
+
+            # Pose 6: Linear trajectory
+            pose6 = self.compute_pose(self.poses['6'])
+            self.get_logger().info(f'Planning linear trajectory to pose 6: pos=({pose6.pose.position.x:.3f}, {pose6.pose.position.y:.3f}, {pose6.pose.position.z:.3f})')
+            traj6 = self.plan_linear_to_pose(pose5, pose6)
+            if not traj6:
+                self.get_logger().error('Failed to plan linear trajectory to pose 6.')
+                return False
+            self.publish_trajectory(traj6)
+
+            return True
 
         def plan_to_pose(self, target_pose):
             motion_plan_request = MotionPlanRequest()
@@ -185,6 +237,8 @@ def generate_launch_description():
             motion_plan_request.allowed_planning_time = 7.0
             motion_plan_request.max_velocity_scaling_factor = 0.2
             motion_plan_request.max_acceleration_scaling_factor = 0.2
+            motion_plan_request.planner_id = "RRTConnectkConfigDefault"
+            #motion_plan_request.path_optimization.optimize_path_length = True
 
             constraints = Constraints()
             position_constraint = PositionConstraint()
@@ -211,8 +265,8 @@ def generate_launch_description():
 
             joint_constraint = JointConstraint()
             joint_constraint.joint_name = 'shoulder_pan_joint'
-            joint_constraint.position = 0.0  # Center around 0 (adjust based on current pose if known)
-            joint_constraint.tolerance_above = math.radians(180)  # ±90 degrees
+            joint_constraint.position = 0.0
+            joint_constraint.tolerance_above = math.radians(180)
             joint_constraint.tolerance_below = math.radians(180)
             joint_constraint.weight = 1.0
             constraints.joint_constraints = [joint_constraint]
@@ -254,7 +308,7 @@ def generate_launch_description():
             cartesian_request.waypoints = [start_pose.pose, goal_pose.pose]
             cartesian_request.max_velocity_scaling_factor = 0.2
             cartesian_request.max_acceleration_scaling_factor = 0.2
-            cartesian_request.jump_threshold = 0.0  # Disable joint jumps
+            cartesian_request.jump_threshold = 0.0
             try:
                 self.get_logger().info('Calling /compute_cartesian_path...')
                 future = self.cartesian_client.call_async(cartesian_request)
@@ -296,19 +350,14 @@ def generate_launch_description():
     node = JointTrajectoryPublisher()
     try:
         while rclpy.ok():
-            user_input = input("Enter 1 for pose, o to open gripper, c to close, q to quit: ")
-            if user_input in node.poses:
-                trajectory = node.compute_ik_and_plan(user_input)
-                if not trajectory:
-                    node.get_logger().error(f'Failed to plan trajectory for pose {user_input}')
-            elif user_input == 'o':
-                node.grip_external(width=37.0)
-            elif user_input == 'c':
-                node.grip_external(width=0.0)
+            user_input = input('Enter "start" to begin sequence, "q" to quit: ')
+            if user_input == 'start':
+                if not node.execute_sequence():
+                    node.get_logger().error('Sequence execution failed.')
             elif user_input == 'q':
                 break
             else:
-                node.get_logger().warn(f'Invalid input: {user_input}. Enter 1, o, c, or q.')
+                node.get_logger().warn(f'Invalid input: {user_input}. Enter "start" or "q".')
             rclpy.spin_once(node, timeout_sec=0.1)
     except KeyboardInterrupt:
         node.get_logger().info('Shutting down...')

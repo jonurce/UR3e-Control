@@ -34,6 +34,12 @@
           <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.0015 0.0015 0.002"/>
         </geometry>
       </collision>
+      <collision>
+          <origin rpy="0 0 0" xyz="0 0 -0.022"/>
+          <geometry>
+              <cylinder radius="0.06" length="0.05"/>
+          </geometry>
+      </collision>
       <inertial>
         <mass value="0.095" />
         <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
