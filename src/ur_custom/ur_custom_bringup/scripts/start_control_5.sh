@@ -22,7 +22,7 @@ ros2 launch onrobot_2fg7 onrobot_launch.py ip:="192.168.0.100" &
 
 sleep 5
 
-ros2 launch ur_custom_driver choice_ik_4.launch.py
+ros2 launch ur_custom_driver choice_ik_5_task.launch.py
 
 # Keep the script running until Ctrl+C
 wait
