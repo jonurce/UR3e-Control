@@ -7,7 +7,7 @@ cleanup() {
     pkill -9 -f "ros2|gazebo|gz|nav2|amcl|bt_navigator|nav_to_pose|rviz2|assisted_teleop|cmd_vel_relay|robot_state_publisher|joint_state_publisher|move_to_free|mqtt|autodock|cliff_detection|moveit|move_group|basic_navigator"
 }
 
-# Set up cleanup trap
+#  Set up cleanup trap
 trap 'cleanup' SIGINT SIGTERM
 
 ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.0.100 launch_rviz:=false use_mock_hardware:=true &
