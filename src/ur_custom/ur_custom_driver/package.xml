@@ -8,6 +8,7 @@
   <license>BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>rosidl_interface_packages</buildtool_depend>
 
   <depend>ur_robot_driver</depend>
   <depend>ur_moveit_config</depend>
@@ -16,14 +17,21 @@
   <depend>trajectory_msgs</depend>
   <depend>std_msgs</depend>
   <depend>shape_msgs</depend>
+  <depend>sensor_msgs</depend>
   <depend>rclpy</depend>
   <depend>xacro</depend>
   <depend>moveit_py</depend>
   <depend>moveit_configs_utils</depend>
   <depend>onrobot_msgs</depend>
+  <depend>cv_bridge</depend>
+  <!-- <depend>ultralytics</depend> -->
+
+  <exec_depend>rosidl_default_runtime</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+
+  <member_of_group>rosidl_interface_packages</member_of_group>
 
   <export>
     <build_type>ament_cmake</build_type>

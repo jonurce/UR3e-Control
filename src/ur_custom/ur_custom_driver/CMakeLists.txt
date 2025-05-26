@@ -16,16 +16,34 @@ find_package(trajectory_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(shape_msgs REQUIRED)
 find_package(xacro REQUIRED)
+find_package(sensor_msgs REQUIRED)
+#find_package(ultralytics REQUIRED)
+find_package(cv_bridge REQUIRED)
+find_package(onrobot_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+# Generate interfaces for custom service
+rosidl_generate_interfaces(
+        ${PROJECT_NAME}
+        "srv/CameraProcess.srv"
+        DEPENDENCIES std_msgs
+)
 
 # Copy necessary files to designated locations in the project
 install (
-        DIRECTORY launch scripts
+        DIRECTORY cam_launch launch scripts srv
         DESTINATION share/${PROJECT_NAME}
 )
 
 install(PROGRAMS
-        scripts/onrobot_methods.py
+        scripts/joint_trajectory_publisher.py
         DESTINATION lib/${PROJECT_NAME}
+        RENAME joint_trajectory_publisher
+)
+install(PROGRAMS
+        scripts/camera_server.py
+        DESTINATION lib/${PROJECT_NAME}
+        RENAME camera_server
 )
 
 if(BUILD_TESTING)
