@@ -17,16 +17,19 @@ find_package(std_msgs REQUIRED)
 find_package(shape_msgs REQUIRED)
 find_package(xacro REQUIRED)
 find_package(sensor_msgs REQUIRED)
-#find_package(ultralytics REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(onrobot_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(OpenCV REQUIRED COMPONENTS core aruco)
 
 # Generate interfaces for custom service
 rosidl_generate_interfaces(
         ${PROJECT_NAME}
         "srv/CameraProcess.srv"
-        DEPENDENCIES std_msgs
+        "srv/ArucoPose.srv"
+        DEPENDENCIES std_msgs geometry_msgs
 )
 
 # Copy necessary files to designated locations in the project
