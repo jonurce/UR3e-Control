@@ -25,8 +25,18 @@ colcon build
 source ~/ros2_ws/install/setup.bash
 ```
 
-In a new terminal:
+For launching the sequence program (with hardcoded test positions) run the next commands in a new terminal:
+```bash
+source ~/ros2_ws/install/setup.bash
+bash ~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_sequence.sh
+```
+
+For launching the main program run the next commands in a new terminal:
 ```bash
 source ~/ros2_ws/install/setup.bash
 
+# Source the virtual environment for using Ultralytics
+source ~/Workspace/swap_ws/.venv/bin/activate
+
+bash ~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_program.sh
 ```
