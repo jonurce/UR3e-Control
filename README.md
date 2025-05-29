@@ -25,3 +25,8 @@ colcon build
 source ~/ros2_ws/install/setup.bash
 ```
 
+In a new terminal:
+```bash
+source ~/ros2_ws/install/setup.bash
+
+```
