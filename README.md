@@ -1,7 +1,9 @@
 
 # 🤖 UR3e-Control
 
-This repository contains a ROS 2 Jazzy workspace to control a **Universal Robots UR3e** robotic arm with integrated support for external motion control, OnRobot grippers, and visualization using RViz2. The project enables robot motion planning, execution, and manipulation tasks, integrating MoveIt 2 and ROS 2 Control.
+This repository contains a ROS 2 Jazzy workspace to control a **Universal Robots UR3e** robotic arm with a OnRobot 2FG7 gripper and visualization using RViz2. The project enables robot motion planning, execution, and manipulation tasks, integrating MoveIt 2 and ROS 2 Control.
+
+The program has been created for the robotic arm with an attached camera to its end-effector.
 
 ## 📁 Repository Structure
 
