@@ -47,7 +47,6 @@ git clone https://github.com/Bkyb/onrobot_gripper_ros2.git
 ```bash
 cd ~/ros2_ws
 colcon build
-source install/setup.bash
 ```
 
 ## 🔌 External Control Setup
@@ -64,3 +63,21 @@ To control the robot from an external computer:
 1. Install the **OnRobot URCap** for the 2FG7 gripper model.
 2. Configure the gripper node via the `onrobot_gripper_ros2` package.
 3. Control the gripper using ROS 2 services or topics exposed by the driver.
+
+## Launch the sequence test control
+
+```bash
+cd ~/ros2_ws
+source install/setup.bash
+bash "~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_sequence.sh"
+```
+
+## Launch the program control with the camera
+
+```bash
+cd ~/ros2_ws
+source install/setup.bash
+source ~/ros2_ws/.venv/bin/activate
+bash "~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_sequence.sh"
+```
+
