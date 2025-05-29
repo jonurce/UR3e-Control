@@ -40,41 +40,15 @@ git clone https://github.com/jonurce/UR3e-Control.git
 
 # OnRobot gripper ROS 2 interface
 git clone https://github.com/Bkyb/onrobot_gripper_ros2.git
-
-# Universal Robots ROS 2 Driver
-git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
-
-# UR description package
-git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.git
 ```
-
-> ℹ️ Make sure you're using the `jazzy` branch if working with ROS 2 Jazzy.
 
 ### 🔧 Build Instructions
 
 ```bash
 cd ~/ros2_ws
-colcon build --symlink-install
+colcon build
 source install/setup.bash
 ```
-
-## 🚀 Usage
-
-### Launch the UR3e Robot
-
-```bash
-ros2 launch ur3e_bringup ur3e.launch.py
-```
-
-This launches the robot with controllers, the robot state publisher, and MoveIt 2 if configured.
-
-### Visualize in RViz
-
-```bash
-ros2 launch ur3e_bringup rviz.launch.py
-```
-
-This launches the full RViz2 visualization with interactive markers for planning and executing motion.
 
 ## 🔌 External Control Setup
 
@@ -87,15 +61,6 @@ To control the robot from an external computer:
 
 ## 🦾 OnRobot Gripper Integration
 
-1. Install the **OnRobot URCap** for your gripper model (e.g., 2FG7).
+1. Install the **OnRobot URCap** for the 2FG7 gripper model.
 2. Configure the gripper node via the `onrobot_gripper_ros2` package.
 3. Control the gripper using ROS 2 services or topics exposed by the driver.
-
-## 📜 License
-
-This project is under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## 📬 Contact
-
-Created and maintained by [@jonurce](https://github.com/jonurce)  
-For issues or contributions, please open an [issue](https://github.com/jonurce/UR3e-Control/issues) or submit a pull request.
