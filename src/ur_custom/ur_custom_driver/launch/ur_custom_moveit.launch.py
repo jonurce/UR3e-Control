@@ -19,7 +19,7 @@ from moveit_configs_utils import MoveItConfigsBuilder
 
 from ament_index_python.packages import get_package_share_directory
 
-
+# This file is a copy-paste of /opt/ros/jazzy/share/ur_moveit_config/launch/ur_moveit.launch.py with modification from line 85 to 93
 def load_yaml(package_name, file_path):
     package_path = get_package_share_directory(package_name)
     absolute_file_path = os.path.join(package_path, file_path)
@@ -82,6 +82,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration("use_sim_time")
     publish_robot_description_semantic = LaunchConfiguration("publish_robot_description_semantic")
 
+    # Modified here, changing the path to the custom srdf file
     pkg_path = get_package_share_directory('ur_custom_description')
     srdf_path = os.path.join(pkg_path, 'srdf')
 

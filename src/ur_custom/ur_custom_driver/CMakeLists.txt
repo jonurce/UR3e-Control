@@ -32,16 +32,16 @@ rosidl_generate_interfaces(
         DEPENDENCIES std_msgs geometry_msgs
 )
 
-# Copy necessary files to designated locations in the project
+# Copy necessary files to designated locations in the project           -
 install (
-        DIRECTORY cam_launch launch scripts srv
+        DIRECTORY launch scripts srv
         DESTINATION share/${PROJECT_NAME}
 )
 
 install(PROGRAMS
-        scripts/joint_trajectory_publisher.py
+        scripts/joint_traj_publisher.py
         DESTINATION lib/${PROJECT_NAME}
-        RENAME joint_trajectory_publisher
+        RENAME joint_traj_publisher
 )
 install(PROGRAMS
         scripts/camera_server.py

@@ -10,7 +10,7 @@ from launch.substitutions import (
     PathJoinSubstitution,
 )
 
-
+# This file is a copy-paste of /opt/ros/jazzy/share/ur_robot_driver/launch/ur_rsp_launch.py modifying from line 1264 to 273
 def generate_launch_description():
     ur_type = LaunchConfiguration("ur_type")
     robot_ip = LaunchConfiguration("robot_ip")
@@ -261,6 +261,7 @@ def generate_launch_description():
             description="Config file containing the visual parameters (e.g. meshes) of the robot.",
         )
     )
+    # Modification here for changing the path to the custom urdf
     declared_arguments.append(
         DeclareLaunchArgument(
             "description_file",

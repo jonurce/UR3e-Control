@@ -35,9 +35,9 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/base_link.stl" scale="0.0012 0.0012 0.001"/>
+          <box size="0.11 0.1 0.16" />
         </geometry>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0.08" rpy="0 0 0"/>
       </collision>
     </link>
 
@@ -65,7 +65,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/left_finger_link.stl" scale="0.0013 0.0013 0.001"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/left_finger_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="-0.032239 0.029494 -0.12005" rpy="0 0 0"/>
       </collision>
@@ -89,7 +89,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/right_finger_link.stl" scale="0.0013 0.0013 0.001"/>
+          <mesh filename="file://$(find ur_custom_description)/meshes/onrobot_2fg7/right_finger_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="0.054361 0.029494 -0.12005" rpy="0 0 0"/>
       </collision>
@@ -107,26 +107,14 @@
       <origin xyz="-0.054361 -0.029494 0.12005" rpy="0 0 0"/>
     </joint>
 
-    <!--
-    <joint name="${prefix}gripper_controller" type="fixed">
-      <axis xyz="-1 0 0"/>
-      <limit effort="${joint_effort}" lower="0.0" upper="0.019" velocity="${joint_velocity}"/>
-      <parent link="${prefix}gripper_base"/>
-      <child link="${prefix}gripper_left"/>
-      <origin xyz="0.032239 -0.029494 0.12005" rpy="0 0 0"/>
-      <dynamics damping="${joint_damping}" friction="${joint_friction}"/>
-    </joint>
+    <link name="tool_tip">
+    </link>
 
-    <joint name="${prefix}gripper_base_to_${prefix}gripper_right" type="fixed">
-      <axis xyz="1 0 0"/>
-      <limit effort="${joint_effort}" lower="-0.019" upper="0.019" velocity="${joint_velocity}"/>
-      <parent link="${prefix}gripper_base"/>
-      <child link="${prefix}gripper_right"/>
-      <origin xyz="-0.054361 -0.029494 0.12005" rpy="0 0 0"/>
-      <mimic joint="${prefix}gripper_controller" multiplier="1.0" offset="0"/>
-      <dynamics damping="${joint_damping}" friction="${joint_friction}"/>
+    <joint name="$tool0_to_tool_tip" type="fixed">
+      <parent link="tool0"/>
+      <child link="tool_tip"/>
+      <origin xyz="0 0 0.16" rpy="0 0 0"/>
     </joint>
-    -->
 
   </xacro:macro>
 </robot>

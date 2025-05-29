@@ -3,15 +3,6 @@
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="parent" default="tool0"/>
 
-     <xacro:property name="M_PI" value="3.1415926535897931" />
-
-     <xacro:property name="l515_cam_width" value="0.061"/>
-     <xacro:property name="l515_cam_height" value="0.061"/>
-     <xacro:property name="l515_cam_depth" value="0.026"/>
-
-     <xacro:property name="l515_cam_depth_to_infra_offset" value="0.0"/>
-     <xacro:property name="l515_cam_depth_to_color_offset" value="0.012"/>
-
     <joint name="camera_joint" type="fixed">
       <parent link="$(arg prefix)$(arg parent)"/>
       <child link="camera" />
@@ -20,31 +11,35 @@
 
     <link name="camera">
       <visual>
-        <origin rpy="0 0 0" xyz="0 -0.07 0"/>
+        <origin rpy="0 0 0" xyz="0 -0.07 0.01"/>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.001 0.001 0.001"/>
+          <box size="0.05 0.05 0.05" />
         </geometry>
-        <material name="aluminum">
-          <color rgba="0.5 0.5 0.5 1"/>
+        <material name="silver">
+          <color rgba="0.600 0.600 0.600 1.000"/>
         </material>
       </visual>
       <collision>
-        <origin rpy="0 0 0" xyz="0 -0.07 0"/>
+        <origin rpy="0 0 0" xyz="0 -0.07 0.01"/>
         <geometry>
-          <mesh filename="file://$(find ur_custom_description)/meshes/realsense_l515/Intel_RealSense_L515.stl" scale="0.0015 0.0015 0.002"/>
+          <box size="0.08 0.08 0.08" />
         </geometry>
       </collision>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 -0.01"/>
+        <geometry>
+          <cylinder radius="0.04" length="0.015"/>
+        </geometry>
+        <material name="silver">
+          <color rgba="0.600 0.600 0.600 1.000"/>
+        </material>
+      </visual>
       <collision>
-          <origin rpy="0 0 0" xyz="0 0 -0.022"/>
-          <geometry>
-              <cylinder radius="0.06" length="0.05"/>
-          </geometry>
+        <origin rpy="0 0 0" xyz="0 0 -0.01"/>
+        <geometry>
+          <cylinder radius="0.06" length="0.05"/>
+        </geometry>
       </collision>
-      <inertial>
-        <mass value="0.095" />
-        <origin rpy="0 0 0" xyz="0 -0.07 -0.01"/>
-        <inertia ixx="0.000044" ixy="0.0" ixz="0.0" iyy="0.000027" iyz="0.0" izz="0.000027" />
-      </inertial>
     </link>
 
 </robot>

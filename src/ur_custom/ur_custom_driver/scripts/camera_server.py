@@ -4,8 +4,8 @@ import rclpy
 from rclpy.node import Node
 from ur_custom_driver.srv import CameraProcess, ArucoPose
 import cv2
+from scipy.spatial.transform import Rotation as R
 import numpy as np
-import torch
 from ultralytics import YOLO
 import tf2_ros
 import tf2_geometry_msgs
@@ -22,11 +22,11 @@ class CameraServer(Node):
         self.get_logger().info('CameraServer initialized.')
 
         # Hardcoded parameters for ArUco
-        self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
-        self.aruco_params = cv2.aruco.DetectorParameters()
-        self.marker_size = 0.05  # meters
-        self.camera_matrix = np.array([[1000, 0, 640], [0, 1000, 360], [0, 0, 1]], dtype=np.float32)
-        self.dist_coeffs = np.zeros((5, 1), dtype=np.float32)
+        self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_50)
+        self.marker_size = 0.024  # meters
+        self.camera_matrix = np.array([[1.39870845e+03, 0.00000000e+00, 9.66861109e+02], [0.00000000e+00, 1.40794892e+03, 5.41442327e+02], [0.00000000e+00, 0.00000000e+00, 1.00000000e+00]], dtype=np.float32)
+        self.dist_coeffs = np.array([[-8.78837077e-03, 1.52017955e+00, 7.77842959e-04, -3.30963514e-03, -5.42404330e+00]], dtype=np.float32)
+
 
     def process_image_callback(self, request, response):
         try:
@@ -34,8 +34,8 @@ class CameraServer(Node):
             cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
             if not cap.isOpened():
                 self.get_logger().error('Failed to open camera.')
-                response.value1 = 0
-                response.value2 = 0
+                response.value1 = -1
+                response.value2 = -1
                 return response
 
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -45,8 +45,8 @@ class CameraServer(Node):
             ret, frame = cap.read()
             if not ret:
                 self.get_logger().error('Failed to capture image.')
-                response.value1 = 0
-                response.value2 = 0
+                response.value1 = -1
+                response.value2 = -1
                 return response
 
             results = model.predict(frame, conf=0.7, iou=0.5, device="cpu")
@@ -57,16 +57,10 @@ class CameraServer(Node):
             max_even_class = None
             # Placeholder: Extract two integers (one even, one odd) from YOLO results
             for result in results:
-                boxes = result.boxes.xyxy.cpu().numpy()
                 scores = result.boxes.conf.cpu().numpy()
                 classes = result.boxes.cls.cpu().numpy()
-                class_names = result.names
-                print(classes)
-
                 # Choose odd class with highest score and even class with highest score
-                for box, score, cls in zip(boxes, scores, classes):
-                    x1, y1, x2, y2 = map(int, box)
-                    label = f"{class_names[int(cls)]} {score:.2f}"
+                for score, cls in zip(scores, classes):
                     cls_int = int(cls)
                     if cls_int in range(2, 10):
                         if cls_int % 2 == 1:  # Odd
@@ -80,24 +74,18 @@ class CameraServer(Node):
             cap.release()
 
             # Assign values (odd and even)
-            value1 = max_odd_class if max_odd_class is not None else 0
-            value2 = max_even_class if max_even_class is not None else 0
+            value1 = max_odd_class if max_odd_class is not None else -1
+            value2 = max_even_class if max_even_class is not None else -1
+            response.value1 = value1
+            response.value2 = value2
+            self.get_logger().info(f'Returning values: {value1}, {value2}')
+            return response
 
-            # Validate values
-            if (value1 in range(2, 10) and value2 in range(2, 10) and value1 % 2 != value2 % 2):
-                response.value1 = value1
-                response.value2 = value2
-                self.get_logger().info(f'Returning values: {value1}, {value2}')
-            else:
-                self.get_logger().error('YOLO output invalid: values must be 2-9, one even, one odd')
-                self.get_logger().error(f'Obtained values: {value1}, {value2}')
-                response.value1 = 0
-                response.value2 = 0
 
         except Exception as e:
             self.get_logger().error(f'Image capture or processing failed: {str(e)}')
-            response.value1 = 0
-            response.value2 = 0
+            response.value1 = -1
+            response.value2 = -1
 
         finally:
             if cap:
@@ -126,8 +114,9 @@ class CameraServer(Node):
                 return response
 
             # Detect ArUco marker
-            detector = cv2.aruco.ArucoDetector(self.aruco_dict, self.aruco_params)
-            corners, ids, _ = detector.detectMarkers(frame)
+            detector = cv2.aruco.ArucoDetector(self.aruco_dict)
+            corners, ids, rejected = detector.detectMarkers(frame)
+            self.get_logger().info(f"Detected IDs: {ids}, Rejected: {len(rejected)}")
 
             if ids is None or len(ids) == 0:
                 response.success = False
@@ -136,75 +125,7 @@ class CameraServer(Node):
                 return response
 
             # Estimate pose in camera frame
-            rvec, tvec, _ = cv2.aruco.estimatePoseSingleMarkers(corners[0], self.marker_size, self.camera_matrix, self.dist_coeffs)
-
-            # Convert rotation vector to rotation matrix
-            rmat, _ = cv2.Rodrigues(rvec[0])
-
-            # Create pose in camera frame
-            pose = PoseStamped()
-            pose.header.frame_id = "camera_frame"
-            pose.pose.position.x = float(tvec[0][0])
-            pose.pose.position.y = float(tvec[0][1])
-            pose.pose.position.z = float(tvec[0][2])
-
-            # Convert rotation matrix to quaternion
-            def rotation_matrix_to_quaternion(rmat):
-                trace = np.trace(rmat)
-                if trace > 0:
-                    S = np.sqrt(trace + 1.0) * 2.0
-                    w = 0.25 * S
-                    x = (rmat[2, 1] - rmat[1, 2]) / S
-                    y = (rmat[0, 2] - rmat[2, 0]) / S
-                    z = (rmat[1, 0] - rmat[0, 1]) / S
-                elif rmat[0, 0] > rmat[1, 1] and rmat[0, 0] > rmat[2, 2]:
-                    S = np.sqrt(1.0 + rmat[0, 0] - rmat[1, 1] - rmat[2, 2]) * 2.0
-                    w = (rmat[2, 1] - rmat[1, 2]) / S
-                    x = 0.25 * S
-                    y = (rmat[0, 1] + rmat[1, 0]) / S
-                    z = (rmat[0, 2] + rmat[2, 0]) / S
-                elif rmat[1, 1] > rmat[2, 2]:
-                    S = np.sqrt(1.0 + rmat[1, 1] - rmat[0, 0] - rmat[2, 2]) * 2.0
-                    w = (rmat[0, 2] - rmat[2, 0]) / S
-                    x = (rmat[0, 1] + rmat[1, 0]) / S
-                    y = 0.25 * S
-                    z = (rmat[1, 2] + rmat[2, 1]) / S
-                else:
-                    S = np.sqrt(1.0 + rmat[2, 2] - rmat[0, 0] - rmat[1, 1]) * 2.0
-                    w = (rmat[1, 0] - rmat[0, 1]) / S
-                    x = (rmat[0, 2] + rmat[2, 0]) / S
-                    y = (rmat[1, 2] + rmat[2, 1]) / S
-                    z = 0.25 * S
-                return np.array([x, y, z, w])
-
-            quat = rotation_matrix_to_quaternion(rmat)
-            pose.pose.orientation.x = quat[0]
-            pose.pose.orientation.y = quat[1]
-            pose.pose.orientation.z = quat[2]
-            pose.pose.orientation.w = quat[3]
-
-            # Create transform from camera to world
-            camera_transform = tf2_geometry_msgs.TransformStamped()
-            camera_transform.header.frame_id = "world"
-            camera_transform.child_frame_id = "camera_frame"
-            camera_transform.transform.translation.x = request.x
-            camera_transform.transform.translation.y = request.y
-            camera_transform.transform.translation.z = request.z
-
-            # Convert roll, pitch, yaw to quaternion
-            cy = math.cos(request.yaw * 0.5)
-            sy = math.sin(request.yaw * 0.5)
-            cp = math.cos(request.pitch * 0.5)
-            sp = math.sin(request.pitch * 0.5)
-            cr = math.cos(request.roll * 0.5)
-            sr = math.sin(request.roll * 0.5)
-            camera_transform.transform.rotation.w = cr * cp * cy + sr * sp * sy
-            camera_transform.transform.rotation.x = sr * cp * cy - cr * sp * sy
-            camera_transform.transform.rotation.y = cr * sp * cy + sr * cp * sy
-            camera_transform.transform.rotation.z = cr * cp * sy - sr * sp * cy
-
-            # Transform pose to world frame
-            world_pose = self.tf_buffer.transform(pose, "world", timeout=rclpy.duration.Duration(seconds=1.0))
+            rvec, tvec, _ = cv2.aruco.estimatePoseSingleMarkers(corners, self.marker_size, self.camera_matrix, self.dist_coeffs)
 
             # Convert quaternion to roll, pitch, yaw
             def quaternion_to_euler(x, y, z, w):
@@ -220,22 +141,67 @@ class CameraServer(Node):
                 yaw = math.atan2(t3, t4)
                 return roll, pitch, yaw
 
-            roll, pitch, yaw = quaternion_to_euler(
-                world_pose.pose.orientation.x,
-                world_pose.pose.orientation.y,
-                world_pose.pose.orientation.z,
-                world_pose.pose.orientation.w
-            )
+            for i, id in enumerate(ids):
 
-            # Fill response
-            response.x = world_pose.pose.position.x
-            response.y = world_pose.pose.position.y
-            response.z = world_pose.pose.position.z
-            response.roll = roll
-            response.pitch = pitch
-            response.yaw = yaw
-            response.success = True
-            response.message = "Marker pose detected."
+                # Transform: marker to camera (Marker frame represented in camera frame)
+                marker_pose_camera = np.eye(4, dtype=np.float32)
+                marker_pose_camera[0:3, 0:3] = cv2.Rodrigues(np.array(rvec[i][0]))[0]
+                marker_pose_camera[0:3, 3:4] = tvec[i][0].reshape(3, 1)
+
+                # Transform: camera to tool_tip (Camera frame represented in tool_tip frame)
+                # Camera frame: x right - y down - z out (same as tool_tip)
+                # No rotation, just translation
+                camera_pose_tool = np.eye(4, dtype=np.float32)
+                camera_pose_tool[0:3, 3:4] = np.array([[0.0], [-0.075], [-0.16]], dtype=np.float32)
+
+                # Transform: tool_tip to world (Tool_tip frame represented in world frame)
+                # Convert roll, pitch, yaw to quaternion
+                cy = math.cos(request.yaw)
+                sy = math.sin(request.yaw)
+                cp = math.cos(request.pitch)
+                sp = math.sin(request.pitch)
+                cr = math.cos(request.roll)
+                sr = math.sin(request.roll)
+                rotation_matrix = np.array([
+                    [cy*cp, cy*sp*sr-sy*cr, cy*sp*cr+sy*sr],
+                    [sy*cp, sy*sp*sr+cy*cr, sy*sp*cr-cy*sr],
+                    [-sp, cp*sr, cp*cr]
+                ], dtype=np.float32)
+                translation = np.array([[request.x], [request.y], [request.z]], dtype=np.float32)
+                tool_to_world = np.eye(4, dtype=np.float32)
+                tool_to_world[0:3, 0:3] = rotation_matrix
+                tool_to_world[0:3, 3:4] = translation
+
+                # Transform: marker to world frame (Marker frame represented in world frame)
+                marker_pose_world = tool_to_world @ camera_pose_tool @ marker_pose_camera
+
+                # Extract position and orientation
+                world_pos = marker_pose_world[0:3, 3]
+                r = R.from_matrix(marker_pose_world[0:3, 0:3])
+                quat = r.as_quat()
+                world_pose = PoseStamped()
+                world_pose.header.frame_id = "world"
+                world_pose.pose.position.x = float(world_pos[0])
+                world_pose.pose.position.y = float(world_pos[1])
+                world_pose.pose.position.z = float(world_pos[2])
+                world_pose.pose.orientation.x = quat[0]
+                world_pose.pose.orientation.y = quat[1]
+                world_pose.pose.orientation.z = quat[2]
+                world_pose.pose.orientation.w = quat[3]
+
+                # Euler angle format in radians
+                roll, pitch, yaw = quaternion_to_euler(world_pose.pose.orientation.x, world_pose.pose.orientation.y, world_pose.pose.orientation.z, world_pose.pose.orientation.w)
+
+                # Fill response
+                response.x = world_pose.pose.position.x
+                response.y = world_pose.pose.position.y
+                response.z = world_pose.pose.position.z
+                response.roll = roll
+                response.pitch = pitch
+                response.yaw = yaw
+                response.success = True
+                response.message = "Marker pose detected."
+                break
 
             cap.release()
             return response
@@ -247,6 +213,7 @@ class CameraServer(Node):
             if cap:
                 cap.release()
             return response
+
 
 def main():
     rclpy.init()
