@@ -21,7 +21,7 @@ UR3e-Control/src
 Clone the required packages in your workspace's `src` directory:
 
 ```bash
-cd ~/ros2_ws/src
+cd ~/ros2_ws/
 
 # Main project repository
 git clone https://github.com/jonurce/UR3e-Control.git
