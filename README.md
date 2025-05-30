@@ -66,6 +66,6 @@ bash "~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_sequence.sh"
 cd ~/ros2_ws
 source install/setup.bash
 source ~/ros2_ws/.venv/bin/activate
-bash "~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_sequence.sh"
+bash "~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_program.sh"
 ```
 
