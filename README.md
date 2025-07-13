@@ -1,9 +1,11 @@
 
-# 🤖 UR3e-Control
+# UR3e-Control
 
-This repository contains a ROS 2 Jazzy workspace to control a **Universal Robots UR3e** robotic arm with a OnRobot 2FG7 gripper and visualization using RViz2. The project enables robot motion planning, execution, and manipulation tasks, integrating MoveIt 2 and ROS 2 Control.
+This repository contains a ROS 2 Jazzy workspace to control a **Universal Robots UR3e** robotic arm with a **OnRobot 2FG7 gripper** and visualization using RViz2. The project enables robot motion planning, execution, and manipulation tasks, integrating MoveIt 2 and ROS 2 Control.
 
-The program has been created for the robotic arm with an attached camera to its end-effector. IN addition, the program is designed for a specific environment, were the drone structure and station structure are placed in certain areas.
+The program has been created for the robotic arm with an **attached camera to its end-effector**. In addition, the program is designed for a specific environment, were the drone structure and station structure are placed in specific relative loacation to the robot.
+
+To see more details about the project, find the report here: [View Report]()
 
 ## 📁 Repository Structure
 
@@ -53,6 +55,7 @@ To control the robot from an external computer:
 3. Control the gripper using ROS 2 services or topics exposed by the driver.
 
 ## 🚦 Launch the Sequence Test Control
+This code is working and the robot moves.
 
 ```bash
 cd ~/ros2_ws
@@ -61,6 +64,7 @@ bash "~/ros2_ws/src/ur_custom/ur_custom_bringup/scripts/start_sequence.sh"
 ```
 
 ## 📷 Launch the Program Control with Camera
+As commented in the report, this code is not working. There is probably an error related with the camera node.
 
 ```bash
 cd ~/ros2_ws
