@@ -5,9 +5,11 @@ This repository contains a ROS 2 Jazzy workspace to control a **Universal Robots
 
 The program has been created for the robotic arm with an **attached camera to its end-effector**. In addition, the program is designed for a specific environment, were the drone structure and station structure are placed in specific relative loacation to the robot.
 
-To see more details about the project, find the report here: [View Report]()
+To see more details about the project, find the reports here:
+- [View Pre-Project Report](reports/Pre_Project_Report.pdf)
+- [View Final Project Report](reports/Project_Report.pdf)
 
-## 📁 Repository Structure
+### 📁 Repository Structure
 
 ```
 UR3e-Control/src
