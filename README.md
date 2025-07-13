@@ -12,12 +12,10 @@ To see more details about the project, find the reports here:
 ### 📁 Repository Structure
 
 ```
-UR3e-Control/src
-├── ur_custom/
-│   ├── ur_custom_bringup/       # Custom launch and scripts
-│   ├── ur_custom_driver/        # Driver nodes
-│   └── ur_custom_description/   # URDF and meshes
-└── README.md
+UR3e-Control/src/ur_custom
+├── ur_custom_bringup/       # Custom launch and scripts
+├── ur_custom_driver/        # Driver nodes
+└── ur_custom_description/   # URDF and meshes
 ```
 
 ### 📦 ROS 2 Packages
