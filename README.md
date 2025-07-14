@@ -9,6 +9,9 @@ To see more details about the project, find the reports here:
 - [View Pre-Project Report](reports/Pre_Project_Report.pdf)
 - [View Final Project Report](reports/Project_Report.pdf)
 
+The used 3D model CAD files can be found in:  
+- [View 3D CAD files (.prt)](CAD_files)
+
 ### 📁 Repository Structure
 
 ```
